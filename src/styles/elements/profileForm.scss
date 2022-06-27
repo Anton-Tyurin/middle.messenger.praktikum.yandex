@@ -1,0 +1,51 @@
+@import "../variables";
+
+.profileFormItem {
+  width: 510px;
+
+  font-family: 'Inter';
+  font-style: normal;
+}
+
+.profileFormItemWrapper {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.profileFormItemLabel {
+  font-weight: 500;
+  font-size: 13px;
+  line-height: 13px;
+}
+
+.profileFormItemInput {
+  font-weight: 500;
+  font-size: 13px;
+  line-height: 13px;
+  border: none;
+  width: 330px;
+  text-align: right;
+
+  color: $colorLabel;
+}
+
+.profileFormUnderline {
+  width: 510px;
+  margin-bottom: 10px;
+
+
+  border: 1px solid $colorProfileUnderline;
+}
+
+.profileFormItemInput:focus-visible {
+  outline: none;
+}
+
+.profileLinksBlock .formUnderline:last-child {
+  display: none;
+}
+
+.profileFormItem:last-child .formUnderline {
+  display: none;
+}
