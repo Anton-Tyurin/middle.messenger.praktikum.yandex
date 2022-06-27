@@ -8,3 +8,7 @@
 - `npm start` — запуск версии для разработчика,
 - `npm run build:prod` — сборка стабильной версии,
 - `node server.js` - запуск сервера на 3000 порте
+
+## Netlify
+
+ссылка: subtle-alpaca-d51cfe.netlify.app
