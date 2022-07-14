@@ -1,0 +1,26 @@
+@import "../variables";
+
+.userAvatar {
+  text-align: center;
+  color: $colorBlackText;
+  text-decoration: none;
+}
+
+.userAvatar:focus-visible {
+  outline: none;
+}
+
+.userAvatarWrapper {
+  margin-bottom: 20px;
+}
+
+.userAvatarName {
+  display: block;
+  text-align: center;
+
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 16px;
+}

@@ -1,0 +1,23 @@
+---
+title: Profile
+---
+
+{{> baseLayout }}
+
+<div class="profilePageWrapper">
+    {{> asideBackLink}}
+    <div class="profilePageMainContent">
+        {{> avatar showName=true }}
+        <div class="profilePageForm">
+            {{#each profileData.profileData}}
+                {{>profileFormInput disabled=true }}
+            {{/each}}
+        </div>
+        <div class="profileLinksBlock">
+            {{#each profileData.linksData}}
+            {{>link profileLink="profileLink"}}
+                <div class="profileFormUnderline"></div>
+            {{/each}}
+        </div>
+    </div>
+</div>

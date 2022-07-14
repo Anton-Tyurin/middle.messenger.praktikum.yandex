@@ -1,0 +1,23 @@
+@import "../variables";
+
+.link {
+
+  font-family: Inter;
+
+  color: $colorLink;
+  font-size: 11px;
+  line-height: 11px;
+  text-decoration: none;
+}
+
+.profileLink {
+  margin-bottom: 10px;
+
+  font-weight: 500;
+  font-size: 13px;
+  line-height: 13px;
+}
+
+.warningLink {
+  color: $colorLinkWarning;
+}

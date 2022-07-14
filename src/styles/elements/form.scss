@@ -1,0 +1,55 @@
+@import "../variables";
+
+.formHeading {
+  margin-top: 0;
+  text-align: center;
+  line-height: 20px;
+  font-size: 20px;
+  margin-bottom: 50px;
+}
+
+.formItem {
+  display: flex;
+  justify-content: left;
+  flex-direction: column;
+  width: 280px;
+}
+.formItemLabel{
+  color: $colorLabel;
+  margin-bottom: 8px;
+
+  font-style: normal;
+  font-weight: 500;
+  font-size: 9px;
+  line-height: 9px;
+}
+
+.formItemInput {
+  width: 280px;
+
+  border: none;
+  margin-bottom: 8px;
+}
+.formItemInput:focus-visible {
+  outline: none;
+}
+
+.formUnderline{
+  width: 280px;
+
+  border: 1px solid $colorLink;
+}
+
+.formItemError {
+
+  font-style: normal;
+  font-weight: 400;
+  font-size: 8px;
+  line-height: 8px;
+
+  color: $colorErrorMessage;
+}
+
+.formItemLabelWrapper {
+  margin-bottom: 8px;
+}

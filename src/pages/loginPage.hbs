@@ -1,0 +1,23 @@
+---
+title: Login
+formHeading: Вход
+buttonText: Авторизоваться
+linkText: Нет аккаунта?
+linkHref: ./registerPage.hbs
+---
+{{> baseLayout }}
+
+<div class="flexCenterWrapper authWrapper">
+    <div class="authForm loginForm">
+        {{> formHeading}}
+        <div class="flexCenterWrapper loginFormFieldsWrapper formFieldsWrapper">
+            {{#each loginData}}
+                {{> formInput }}
+            {{/each}}
+        </div>
+        <div class="formButtonsWrapper">
+            {{> submitButton}}
+            {{> link }}
+        </div>
+    </div>
+</div>

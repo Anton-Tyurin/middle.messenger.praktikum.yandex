@@ -1,0 +1,44 @@
+.authWrapper {
+  position: relative;
+}
+
+.authForm {
+  position: absolute;
+  padding: 50px 30px 30px;
+
+  font-family: 'Inter';
+
+  background: #FFFFFF;
+  box-shadow: 0 0 6px rgba(0, 0, 0, 0.14);
+  border-radius: 12px;
+  top: 135px;
+}
+
+.loginForm {
+  height: 380px;
+}
+
+.formFieldsWrapper {
+  justify-content: center;
+  flex-direction: column;
+
+  gap: 16px;
+}
+
+.loginFormFieldsWrapper {
+  margin-bottom: 100px;
+}
+
+.registerFormFieldsWrapper {
+  margin-bottom: 50px;
+}
+
+.formButtonsWrapper {
+  display: flex;
+  justify-content: center;
+
+  align-items: center;
+
+  flex-direction: column;
+  gap: 16px;
+}

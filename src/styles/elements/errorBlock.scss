@@ -1,0 +1,18 @@
+
+.errorBlock {
+  text-align: center;
+  margin-top: 280px;
+  font-weight: 500;
+
+  font-family: Inter;
+
+  .errorCode {
+    font-size: 40px;
+    line-height: 40px;
+  }
+  .errorMessage {
+    font-size: 20px;
+    line-height: 20px;
+    margin-bottom: 70px;
+  }
+}
