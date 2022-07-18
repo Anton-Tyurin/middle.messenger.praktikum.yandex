@@ -1,0 +1,1 @@
+export const submit_button_template = `<button class="submitButton" value="true" type="submit">{{text}}</button>`

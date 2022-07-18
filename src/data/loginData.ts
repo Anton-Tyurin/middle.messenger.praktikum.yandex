@@ -1,4 +1,4 @@
-[
+export const loginData = [
   {
     "label": "Логин",
     "id": "login",
