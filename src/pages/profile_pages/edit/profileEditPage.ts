@@ -5,7 +5,7 @@ import backlink from "../../../../static/img/backLink/backLink.svg"
 import {profile_edit_page_template} from "./profileEditPage.template";
 import {Avatar} from "../../../components/avatar/avatar";
 import avatarImg from "../../../../static/img/avatar/avatar.svg";
-import {ProfileInput} from "../../../components/profileInput/profileInput";
+import {ProfileInput} from "../../../components/inputs/profileInput/profileInput";
 import {SubmitButton} from "../../../components/submitButton/submitButton";
 export function profileEditPage() {
     const template = Handlebars.compile(profile_edit_page_template);

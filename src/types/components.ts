@@ -3,7 +3,7 @@ export type TInput = {
     label: string,
     id?: string,
     type?: string,
-    name: string,
+    name?: string,
     errorMessage?: string
     value?: string
 }
@@ -20,7 +20,7 @@ export type TProfileInput = {
 }
 
 export type TLink = {
-    linkHref: string,
+    linkHref?: string,
     linkText: string
 }
 
@@ -36,4 +36,14 @@ export type TProfileAvatar = {
 
 export type TButton = {
     text: string;
+}
+
+export type TChatListItem = {
+    id: string,
+    name: string,
+    message: string,
+    avatarEmpty: string
+}
+export type TEmptyChat = {
+    title: string
 }

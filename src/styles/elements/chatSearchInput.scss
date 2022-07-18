@@ -1,0 +1,22 @@
+@import "../variables";
+
+.chatSearchInputWrapper {
+  text-align: right;
+  margin: 20px 0;
+}
+
+.chatSearchInput {
+  font-family: Inter;
+
+  text-align: center;
+  width: 290px;
+  height: 32px;
+  background: $colorLightGrey;
+  border-radius: 5px;
+  padding: 5px;
+  border:0;
+  outline:0;
+}
+.chatSearchInput:focus {
+  outline:none !important;
+}

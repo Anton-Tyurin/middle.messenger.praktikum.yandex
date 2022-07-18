@@ -1,3 +1,11 @@
+// GLOBAL
+body {
+  margin: 0;
+}
+ul {
+  padding: 0;
+}
+
 // fonts
 @import "./fonts";
 
@@ -5,6 +13,7 @@
 @import "./pages/mainPage";
 @import "./pages/authPage";
 @import "./pages/profilePage";
+@import "./pages/mainChat";
 
 // elements/blocks
 @import "./elements/errorBlock";
@@ -15,3 +24,10 @@
 @import "./elements/backLinkBlock";
 @import "./elements/userAvatar";
 @import "./elements/profileForm";
+@import "./elements/chatAside";
+@import "./elements/chatProfileLink";
+@import "./elements/chatSearchInput";
+@import "./elements/chatList";
+@import "./elements/emptyChatBlock";
+@import "./elements/chatActiveBlock";
+@import "./elements/chatMessageInput";

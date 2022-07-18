@@ -19,3 +19,7 @@ export type TProfilePage = {
     links?: string[]
     submitBtn?: string
 }
+export type TMainChat = {
+    chatAside: string,
+    chatMessageBlock: () => string
+}

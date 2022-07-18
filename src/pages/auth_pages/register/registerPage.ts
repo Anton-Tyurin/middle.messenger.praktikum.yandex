@@ -1,5 +1,5 @@
 import * as Handlebars from 'handlebars';
-import {Input} from "../../../components/loginInput/input";
+import {Input} from "../../../components/inputs/loginInput/input";
 import {SubmitButton} from "../../../components/submitButton/submitButton";
 import {AuthLink} from "../../../components/links/authLink/authLink";
 import {register_page_template} from "./registerPage.template";

@@ -1,15 +1,24 @@
 import {IndexPageTemplate} from "./index.template";
 import {ROUTES} from "./constants/routes";
 import "./styles/styles.scss"
-import {error404Page, error500Page, loginPage, registerPage} from "./pages";
-import {profilePage} from "./pages/profile_pages/profile/profilePage";
-import {profileEditPage} from "./pages/profile_pages/edit/profileEditPage";
-import {profileChangePasswordPage} from "./pages/profile_pages/change_password/profileChangePasswordPage";
+import {
+    error404Page,
+    error500Page,
+    loginPage, mainChat,
+    profileChangePasswordPage,
+    profileEditPage,
+    profilePage,
+    registerPage
+} from "./pages";
 
 const root: HTMLElement | null = document.getElementById('root');
 const pathname: string = window.location.pathname;
 if (root) {
     switch (pathname) {
+        case (ROUTES.MAIN): {
+            root.innerHTML = IndexPageTemplate;
+            break;
+        }
         case (ROUTES.PAGE_404): {
             root.innerHTML = error404Page();
             break;
@@ -38,8 +47,16 @@ if (root) {
             root.innerHTML = profileChangePasswordPage();
             break;
         }
+        // TODO: сделать аккуратнее, чтобы мы не уходили со страницы
+        case (ROUTES.MAIN_CHAT): {
+            root.innerHTML = mainChat();
+            break;
+        }
+        case (ROUTES.MAIN_CHAT_ACTIVE_DIALOG): {
+            root.innerHTML = mainChat();
+            break;
+        }
         default: {
-            root.innerHTML = IndexPageTemplate;
             break;
         }
     }

@@ -3,7 +3,7 @@ import {TProfilePage} from "../../../types/pages";
 import {profile_page_template} from "./profilePage.template";
 import {AsideBacklink} from "../../../components/asideBacklink/asideBacklink";
 import {Avatar} from "../../../components/avatar/avatar";
-import {ProfileInput} from "../../../components/profileInput/profileInput";
+import {ProfileInput} from "../../../components/inputs/profileInput/profileInput";
 import {ProfileLink} from "../../../components/links/profileLink/profileLink";
 import {ProfileLinkWarning} from "../../../components/links/profileLinkWarning/profileLinkWarning";
 

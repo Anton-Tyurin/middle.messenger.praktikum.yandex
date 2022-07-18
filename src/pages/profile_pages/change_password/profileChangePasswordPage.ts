@@ -3,7 +3,7 @@ import {TProfilePage} from "../../../types/pages";
 import {AsideBacklink} from "../../../components/asideBacklink/asideBacklink";
 import backlink from "../../../../static/img/backLink/backLink.svg"
 import {profile_change_password_page_template} from "./profileChangePassword.template";
-import {ProfileInput} from "../../../components/profileInput/profileInput";
+import {ProfileInput} from "../../../components/inputs/profileInput/profileInput";
 import {Avatar} from "../../../components/avatar/avatar";
 import avatarImg from "../../../../static/img/avatar/avatar.svg";
 import {SubmitButton} from "../../../components/submitButton/submitButton";

@@ -7,4 +7,5 @@ export const IndexPageTemplate =  `
         <a href="./profile">profile page</a>
         <a href="./profileEdit">change profile data</a>
         <a href="./profileChangePassword">change password</a>
+        <a href="./mainChat">main chat</a>
     </nav>`;
