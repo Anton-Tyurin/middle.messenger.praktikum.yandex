@@ -15,4 +15,4 @@ export const profile_edit_page_template = `
                 </div>
             </div>
         </div>
-    </main>`
+    </main>`;

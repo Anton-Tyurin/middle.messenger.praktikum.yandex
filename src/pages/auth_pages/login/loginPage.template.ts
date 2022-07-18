@@ -1,7 +1,7 @@
 export const login_page_template = `
     <main class="wrapper">
         <div class="flexCenterWrapper authWrapper">
-            <div class="authForm loginForm">
+            <form class="authForm loginForm">
                 <div>
                     <h2 class="formHeading">{{formHeading}}</h2>
                 </div>
@@ -14,6 +14,6 @@ export const login_page_template = `
                     {{{ submitButton }}}
                     {{{  link }}}
                 </div>
-            </div>
+            </form>
         </div>
-    </main>`
+    </main>`;

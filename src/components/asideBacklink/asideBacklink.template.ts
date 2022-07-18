@@ -4,4 +4,4 @@ export const aside_backlink_template = `<aside class="backLinkBlock">
             <img src={{backlink}} alt="backlink">
         </a>
     </div>
-</aside>`
+</aside>`;

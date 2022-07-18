@@ -1,7 +1,4 @@
-
-
-export const chat_list_item_template =
-    `<a class="chatProfileLink" href="/mainChat/activeDialog">
+export const chat_list_item_template = `<a class="chatProfileLink" href="/mainChat/activeDialog">
         <li class="chatListItem">
             <div class="chatListItemAvatarWrapper">
                 <img src="{{avatarEmpty}}" class="chatListItemAvatar">
@@ -11,4 +8,4 @@ export const chat_list_item_template =
                 <div class="chatListItemDataMessage">{{this.message}}</div>
             </div>
         </li>
-    </a>`
+    </a>`;

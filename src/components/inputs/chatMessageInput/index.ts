@@ -1,1 +1,1 @@
-export {ChatMessageInput} from "./chatMessageInput";
+export { ChatMessageInput } from './chatMessageInput';

@@ -1,5 +1,5 @@
 export const register_page_template = `<div class="flexCenterWrapper authWrapper">
-    <div class="authForm">
+    <form class="authForm">
             <div>
                 <h2 class="formHeading">{{formHeading}}</h2>
             </div>
@@ -12,5 +12,5 @@ export const register_page_template = `<div class="flexCenterWrapper authWrapper
             {{{ submitButton }}}
             {{{ link }}}
         </div>
-    </div>
-</div>`
+    </form>
+</div>`;

@@ -1,1 +1,1 @@
-export {ChatProfileLink} from "./chatProfileLink";
+export { ChatProfileLink } from './chatProfileLink';

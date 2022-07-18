@@ -1,1 +1,1 @@
-export {mainChat} from "./main_chat/mainChat";
+export { mainChat } from './main_chat/mainChat';

@@ -12,4 +12,4 @@ export enum EVENTS {
     FLOW_RENDER = 'flow:render'
 }
 
-export const HAS_NO_RIGHTS = "Нет прав"
+export const HAS_NO_RIGHTS = 'Нет прав';

@@ -7,4 +7,4 @@ export const error_template = `
                 <a class="link" href={{linkPath}}>{{linkText}}</a>
             </div> 
         </div>
-    </main>`
+    </main>`;

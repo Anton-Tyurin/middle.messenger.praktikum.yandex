@@ -1,4 +1,4 @@
-import { METHODS } from "../constants/core";
+import { METHODS } from '../constants/core';
 
 export type HTTPOptions = {
     headers?: Record<string, string>,
@@ -18,5 +18,5 @@ export type TMetaBlock = {
     props: Record<string, any>;
 }
 
-
 export const REJECT_TEXT = 'No method';
+export type Dictionary = Record<string, any>;

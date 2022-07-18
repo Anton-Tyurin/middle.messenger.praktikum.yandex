@@ -1,4 +1,4 @@
-export const IndexPageTemplate =  `
+export const IndexPageTemplate = `
     <nav class="mainNavPage" >
         <a href="./404">404 page</a>
         <a href="./500">500 page</a>

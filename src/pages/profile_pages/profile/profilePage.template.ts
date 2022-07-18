@@ -18,4 +18,4 @@ export const profile_page_template = `
                 </div>
             </div>
         </div>
-    </main>`
+    </main>`;

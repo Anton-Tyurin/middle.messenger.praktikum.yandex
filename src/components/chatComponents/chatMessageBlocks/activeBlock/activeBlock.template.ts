@@ -20,4 +20,4 @@ export const active_block_template = `<div class="activeChatBlockSelected">
                 <img src="{{forwardLink}}" class="activeChatSendImage">
             </div>
         </div>
-    </div>`
+    </div>`;

@@ -1,2 +1,2 @@
-export * from "./activeBlock"
-export * from "./emptyBlock"
+export * from './activeBlock';
+export * from './emptyBlock';

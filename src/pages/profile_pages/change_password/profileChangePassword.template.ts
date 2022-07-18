@@ -15,4 +15,4 @@ export const profile_change_password_page_template = `
                 </div>
             </div>
         </div>
-    </main>`
+    </main>`;

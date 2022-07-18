@@ -8,4 +8,4 @@ export const avatar_template = `
         {{#if profileName}}
             <span class="userAvatarName">{{profileName}}</span>
         {{/if}}
-    </div>`
+    </div>`;

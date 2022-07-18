@@ -1,1 +1,1 @@
-export {AuthLink} from "./authLink";
+export { AuthLink } from './authLink';

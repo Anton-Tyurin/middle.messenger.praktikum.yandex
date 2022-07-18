@@ -1,1 +1,1 @@
-export {emptyChatBlock} from "./emptyBlock";
+export { emptyChatBlock } from './emptyBlock';

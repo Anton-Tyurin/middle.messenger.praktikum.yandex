@@ -1,1 +1,1 @@
-export {AsideBacklink} from "./asideBacklink";
+export { AsideBacklink } from './asideBacklink';

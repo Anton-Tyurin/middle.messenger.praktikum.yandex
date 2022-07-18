@@ -6,17 +6,8 @@ export type TInput = {
     name?: string,
     errorMessage?: string
     value?: string
-}
-
-export type TProfileInput = {
-    required?: boolean
     fieldDisabled?: boolean
-    label: string,
-    id?: string,
-    type?: string,
-    name: string,
-    errorMessage?: string
-    value?: string
+    validationType?: string
 }
 
 export type TLink = {

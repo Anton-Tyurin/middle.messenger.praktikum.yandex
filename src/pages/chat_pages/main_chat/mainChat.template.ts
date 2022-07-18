@@ -7,4 +7,4 @@ export const main_chat_template = `
             </div>
         </div>
       </main>
-    `
+    `;

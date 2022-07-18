@@ -1,1 +1,1 @@
-export {ProfileInput} from "./profileInput";
+export { ProfileInput } from './profileInput';

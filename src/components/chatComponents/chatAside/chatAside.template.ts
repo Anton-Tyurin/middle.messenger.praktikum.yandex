@@ -14,4 +14,4 @@ export const chat_aside_template = `
         </div>
 
     </div>
-    `
+    `;

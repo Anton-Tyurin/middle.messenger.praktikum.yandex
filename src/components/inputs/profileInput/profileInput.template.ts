@@ -6,9 +6,12 @@ export const profile_input_template = `
                     {{#if fieldDisabled}}
                         <span class="profileFormItemInput">{{value}}</span>
                     {{else}}
-                        <input placeholder={{value}} class="profileFormItemInput" id={{id}} type={{type}} value={{value}}>
+                        <input name={{name}} validation-type={{validationType}} class="profileFormItemInput" data-id={{id}} type={{type}} value={{value}}>
                     {{/if}}
             </div>
             <div class="profileFormUnderline"></div>
         </label>
-    </div>`
+        {{#if errorMessage}}
+            <div class="formItemErrorProfile hidden">{{errorMessage}}</div>
+        {{/if}}
+    </div>`;

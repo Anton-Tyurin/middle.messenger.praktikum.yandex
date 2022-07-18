@@ -1,1 +1,1 @@
-export {ProfileLinkWarning} from "./profileLinkWarning";
+export { ProfileLinkWarning } from './profileLinkWarning';
