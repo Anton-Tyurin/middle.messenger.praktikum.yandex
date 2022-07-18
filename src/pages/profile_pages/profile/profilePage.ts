@@ -1,11 +1,11 @@
 import * as Handlebars from 'handlebars';
 import {TProfilePage} from "../../../types/pages";
 import {profile_page_template} from "./profilePage.template";
-import {AsideBacklink} from "../../../components/asideBacklink/asideBacklink";
-import {Avatar} from "../../../components/avatar/avatar";
-import {ProfileInput} from "../../../components/inputs/profileInput/profileInput";
-import {ProfileLink} from "../../../components/links/profileLink/profileLink";
-import {ProfileLinkWarning} from "../../../components/links/profileLinkWarning/profileLinkWarning";
+import {AsideBacklink} from "../../../components/asideBacklink";
+import {Avatar} from "../../../components/avatar";
+import {ProfileInput} from "../../../components/inputs";
+import {ProfileLink} from "../../../components/links";
+import {ProfileLinkWarning} from "../../../components/links";
 
 import avatarImg from "../../../../static/img/avatar/avatar.svg";
 import backlink from "../../../../static/img/backLink/backLink.svg"

@@ -1,10 +1,10 @@
 import * as Handlebars from 'handlebars';
 import {main_chat_template} from "./mainChat.template";
-import {ChatAside} from "../../../components/chatComponents/chatAside/chatAside";
+import {ChatAside} from "../../../components/chatComponents";
 import {TMainChat} from "../../../types/pages";
-import {chatSelected} from "../../../components/chatComponents/chatMessageBlocks/activeBlock/activeBlock";
+import {chatSelected} from "../../../components/chatComponents";
 import {ROUTES} from "../../../constants/routes";
-import {emptyChatBlock} from "../../../components/chatComponents/chatMessageBlocks/emptyBlock/emptyBlock";
+import {emptyChatBlock} from "../../../components/chatComponents";
 
 export function mainChat() {
     const pathname: string = window.location.pathname;

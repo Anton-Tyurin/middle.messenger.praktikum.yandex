@@ -1,20 +1,20 @@
 import * as Handlebars from 'handlebars';
 import {login_page_template} from "./loginPage.template";
-import {Input} from "../../../components/inputs/loginInput/input";
-import {SubmitButton} from "../../../components/submitButton/submitButton";
-import {AuthLink} from "../../../components/links/authLink/authLink";
+import {LoginInput} from "../../../components/inputs";
+import {SubmitButton} from "../../../components/submitButton";
+import {AuthLink} from "../../../components/links";
 import {TLoginScheme} from "../../../types/pages";
 
 export function loginPage() {
     const template = Handlebars.compile(login_page_template);
-    const loginInput = new Input({
+    const loginInput = new LoginInput({
             name: 'login',
             label: 'Логин',
             type: 'text',
             required: true,
             errorMessage: 'Неверный логин',
         });
-    const passwordInput = new Input({
+    const passwordInput = new LoginInput({
             name: 'password',
             label: 'Пароль',
             type: 'password',

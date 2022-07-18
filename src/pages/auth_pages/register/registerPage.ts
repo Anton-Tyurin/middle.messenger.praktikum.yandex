@@ -1,47 +1,47 @@
 import * as Handlebars from 'handlebars';
-import {Input} from "../../../components/inputs/loginInput/input";
-import {SubmitButton} from "../../../components/submitButton/submitButton";
-import {AuthLink} from "../../../components/links/authLink/authLink";
+import {LoginInput} from "../../../components/inputs";
+import {SubmitButton} from "../../../components/submitButton";
+import {AuthLink} from "../../../components/links";
 import {register_page_template} from "./registerPage.template";
 
 export function registerPage() {
     const template = Handlebars.compile(register_page_template);
-    const email = new Input({
+    const email = new LoginInput({
         "label": "Почта",
         "id": "email",
         "name": "email"
     });
-    const login = new Input({
+    const login = new LoginInput({
         "label": "Логин",
         "id": "login",
         "type": "text",
         "name": "login"
     });
-    const name = new Input({
+    const name = new LoginInput({
         "label": "Имя",
         "id": "name",
         "type": "text",
         "name": "name"
     });
-    const surname = new Input({
+    const surname = new LoginInput({
         "label": "Фамилия",
         "id": "surname",
         "type": "text",
         "name": "surname"
     });
-    const phone = new Input({
+    const phone = new LoginInput({
         "label": "Телефон",
         "id": "phone",
         "type": "text",
         "name": "phone"
     });
-    const password = new Input({
+    const password = new LoginInput({
         "label": "Пароль",
         "id": "password",
         "type": "password",
         "name": "password"
     });
-    const passwordRepeat = new Input({
+    const passwordRepeat = new LoginInput({
         "label": "Пароль (еще раз)",
         "id": "passwordConfirm",
         "type": "password",

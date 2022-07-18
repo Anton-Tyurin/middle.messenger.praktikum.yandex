@@ -1,12 +1,12 @@
 import * as Handlebars from 'handlebars';
 import {TProfilePage} from "../../../types/pages";
-import {AsideBacklink} from "../../../components/asideBacklink/asideBacklink";
+import {AsideBacklink} from "../../../components/asideBacklink";
 import backlink from "../../../../static/img/backLink/backLink.svg"
 import {profile_edit_page_template} from "./profileEditPage.template";
-import {Avatar} from "../../../components/avatar/avatar";
+import {Avatar} from "../../../components/avatar";
 import avatarImg from "../../../../static/img/avatar/avatar.svg";
-import {ProfileInput} from "../../../components/inputs/profileInput/profileInput";
-import {SubmitButton} from "../../../components/submitButton/submitButton";
+import {ProfileInput} from "../../../components/inputs";
+import {SubmitButton} from "../../../components/submitButton";
 export function profileEditPage() {
     const template = Handlebars.compile(profile_edit_page_template);
 
