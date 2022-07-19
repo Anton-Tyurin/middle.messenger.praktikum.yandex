@@ -1,4 +1,3 @@
-export * from './chatMessageInput';
-export * from './chatSearchInput';
+export * from './chatInput';
 export * from './loginInput';
 export * from './profileInput';

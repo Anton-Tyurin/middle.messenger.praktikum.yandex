@@ -2,7 +2,7 @@ import { v4 as uuidv4 } from 'uuid';
 import { chat_aside_template } from './chatAside.template';
 import { Block } from '../../../core/Block';
 import { ChatProfileLink } from '../../links';
-import { ChatSearchInput } from '../../inputs';
+import { ChatInput } from '../../inputs';
 import avatarEmpty from '../../../../static/img/avatar/avatarEmpty.svg';
 import { ChatListItem } from '../chatListItem';
 
@@ -12,7 +12,7 @@ export class ChatAside extends Block {
       context: {
         ...context,
         chatProfileLink: new ChatProfileLink({ linkText: 'Профиль' }).transformToString(),
-        searchInput: new ChatSearchInput({ label: 'Поиск' }).transformToString(),
+        searchInput: new ChatInput({ label: 'Поиск', chatInputClass: 'chatSearchInput', chatInputWrapperClass: 'chatSearchInputWrapper' }).transformToString(),
         listItems: [
           new ChatListItem({
             name: 'Андрей', message: 'Изображение', id: uuidv4(), avatarEmpty

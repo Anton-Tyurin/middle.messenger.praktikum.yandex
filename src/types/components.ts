@@ -9,6 +9,10 @@ export type TInput = {
     fieldDisabled?: boolean
     validationType?: string
 }
+export type TInputChats = TInput & {
+    chatInputWrapperClass: string,
+    chatInputClass: string
+}
 
 export type TLink = {
     linkHref?: string,

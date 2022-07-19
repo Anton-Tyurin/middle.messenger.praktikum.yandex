@@ -10,8 +10,8 @@ export const profile_input_template = `
                     {{/if}}
             </div>
             <div class="profileFormUnderline"></div>
+            {{#if errorMessage}}
+                <div class="formItemErrorProfile hidden">{{errorMessage}}</div>
+            {{/if}}
         </label>
-        {{#if errorMessage}}
-            <div class="formItemErrorProfile hidden">{{errorMessage}}</div>
-        {{/if}}
     </div>`;
