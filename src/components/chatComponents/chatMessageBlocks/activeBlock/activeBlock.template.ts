@@ -9,7 +9,7 @@ export const active_block_template = `<div class="activeChatBlockSelected">
             </div>
         </div>
         <div class="activeChatMainContent"></div>
-        <div class="activeChatFooter">
+        <form class="activeChatFooter">
             <div class="activeChatAddButtonWrapper">
                 <img src="{{addFile}}" class="activeChatAddButtonImage">
             </div>
@@ -19,5 +19,5 @@ export const active_block_template = `<div class="activeChatBlockSelected">
             <div class="activeChatSendWrapper">
                 <img src="{{forwardLink}}" class="activeChatSendImage">
             </div>
-        </div>
+        </form>
     </div>`;

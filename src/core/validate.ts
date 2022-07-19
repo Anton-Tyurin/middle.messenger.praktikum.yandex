@@ -19,7 +19,6 @@ const checkLoginField = (input: HTMLInputElement): boolean => {
     const { checkLogin } = regexp;
     const { value } = input;
     isError = !value.match(checkLogin) || (value.length < 3 || value.length > 20);
-    console.log(isError);
     showWarningMessage(input, isError);
   }
   return isError;
@@ -108,11 +107,18 @@ export const getFormData = (event: Event) => {
     if (!inputs || inputs?.length === 0) {
       return;
     }
-    const data: Dictionary = [...inputs].reduce((model: Dictionary, input: HTMLInputElement) => {
+    // for of для меня лучше подходит, чем forEach, который рекомендуют на airBnb
+    // https://github.com/airbnb/javascript/issues/1271
+    /*eslint-disable */
+    for (const input of inputs) {
+      checkValidation({ input });
+    }
+    /* eslint-enable */
+    const result: Dictionary = [...inputs].reduce((model: Dictionary, input: HTMLInputElement) => {
       const { name, value } = input;
       model[name] = value;
       return model;
     }, {});
-    console.log(data);
+    console.log(result);
   }
 };
