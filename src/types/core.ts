@@ -4,7 +4,7 @@ export type HTTPOptions = {
     headers?: Record<string, string>,
     method?: METHODS,
     timeout?: number,
-    data?: Document | XMLHttpRequestBodyInit | null
+    data?: Document | null
 }
 
 export type TBlockProps = {

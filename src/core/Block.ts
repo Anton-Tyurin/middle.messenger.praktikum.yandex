@@ -99,7 +99,7 @@ export class Block {
   }
 
   render() {
-    const container = document.createElement('div');
+    const container = window.document.createElement('div');
     const { context } = this.props;
     container.innerHTML = this._template(context);
     return container.firstElementChild;
@@ -157,7 +157,9 @@ export class Block {
 
   transformToString(): string {
     const container = document.createElement('div');
-    this.element && container.appendChild(this.element);
+    if (this.element) {
+      container.appendChild(this.element);
+    }
     return container.innerHTML;
   }
 

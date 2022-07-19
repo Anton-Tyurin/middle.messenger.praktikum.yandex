@@ -1,10 +1,10 @@
 import { v4 as uuidv4 } from 'uuid';
 import { chat_aside_template } from './chatAside.template';
 import { Block } from '../../../core/Block';
-import { ChatProfileLink } from '../../links/chatProfileLink/chatProfileLink';
-import { ChatSearchInput } from '../../inputs/chatSearchInput/chatSearchInput';
+import { ChatProfileLink } from '../../links';
+import { ChatSearchInput } from '../../inputs';
 import avatarEmpty from '../../../../static/img/avatar/avatarEmpty.svg';
-import { ChatListItem } from '../chatListItem/chatListItem';
+import { ChatListItem } from '../chatListItem';
 
 export class ChatAside extends Block {
   constructor(context: any, events = {}) {
