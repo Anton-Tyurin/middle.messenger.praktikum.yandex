@@ -3,7 +3,7 @@
 .profileFormItem {
   width: 510px;
 
-  font-family: 'Inter';
+  font-family: 'Inter', sans-serif;
   font-style: normal;
 }
 
@@ -27,7 +27,7 @@
   width: 330px;
   text-align: right;
 
-  color: $colorLabel;
+  color: $color-label;
 }
 
 .profileFormUnderline {
@@ -35,12 +35,10 @@
   margin-bottom: 10px;
 
 
-  border: 1px solid $colorProfileUnderline;
+  border: 1px solid $color-profile-underline;
 }
 
-.profileFormItemInput:focus-visible {
-  outline: none;
-}
+
 
 .profileLinksBlock .formUnderline:last-child {
   display: none;

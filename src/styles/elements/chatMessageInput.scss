@@ -3,15 +3,12 @@
   width: 85%;
 }
 .chatMessageInput {
-  font-family: Inter;
+  font-family: Inter, sans-serif;
   width: 100%;
-  background: $colorLightGrey;
-  border: 1px solid $colorLightGrey;
+  background: $color-light-grey;
+  border: 1px solid $color-light-grey;
   border-radius: 30px;
   height: 32px;
   padding: 10px;
 }
 
-.chatMessageInput:focus-visible {
-  outline: none;
-}

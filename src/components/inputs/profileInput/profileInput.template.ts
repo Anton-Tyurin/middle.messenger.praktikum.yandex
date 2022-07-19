@@ -1,6 +1,6 @@
 export const profile_input_template = `
     <div class="profileFormItem">
-        <label for={{name}}>
+        <label>
             <div class="profileFormItemWrapper">
                 <div class="profileFormItemLabel">{{label}}</div>
                     {{#if fieldDisabled}}

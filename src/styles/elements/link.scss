@@ -2,9 +2,9 @@
 
 .link {
 
-  font-family: Inter;
+  font-family: Inter, sans-serif;
 
-  color: $colorLink;
+  color: $color-link;
   font-size: 11px;
   line-height: 11px;
   text-decoration: none;
@@ -19,5 +19,5 @@
 }
 
 .warningLink {
-  color: $colorLinkWarning;
+  color: $color-link-warning;
 }

@@ -6,12 +6,12 @@
 }
 
 .chatSearchInput {
-  font-family: Inter;
+  font-family: Inter, sans-serif;
 
   text-align: center;
   width: 290px;
   height: 32px;
-  background: $colorLightGrey;
+  background: $color-light-grey;
   border-radius: 5px;
   padding: 5px;
   border:0;

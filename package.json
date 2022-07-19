@@ -13,7 +13,9 @@
     "hbs": "^4.2.0",
     "normalize-scss": "^7.0.1",
     "parcel": "^2.6.2",
-    "sass": "^1.53.0"
+    "sass": "^1.53.0",
+    "stylelint-config-standard": "^26.0.0",
+    "stylelint-config-standard-scss": "^5.0.0"
   },
   "engines": {
     "node": ">= 12.0.0"
@@ -39,8 +41,10 @@
     "build": "parcel build ./index.html --no-cache --public-url ./",
     "start": "parcel index.html --port 3000 --open",
     "server": "node server.js",
-    "linter": "node_modules/.bin/eslint . --ext js,jsx,ts,tsx",
-    "linter:fix": "node_modules/.bin/eslint . --ext js,jsx,ts,tsx --fix"
+    "linter": "eslint . --ext js,jsx,ts,tsx",
+    "linter:fix": "eslint . --ext js,jsx,ts,tsx --fix",
+    "lint:scss": "stylelint src/styles/*.scss",
+    "lint:scss:fix": "stylelint src/styles/*.scss --fix"
   },
   "repository": {
     "type": "git",

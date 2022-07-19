@@ -3,17 +3,17 @@
 .chatList {
   display: flex;
   flex-direction: column;
-  font-family: Inter;
+  font-family: Inter, sans-serif;
 
 }
 .chatProfileLink {
   text-decoration: none;
-  color: $colorBlackText
+  color: $color-black-text;
 }
 .chatListItem {
   height: 82px;
-  border-top: 1px solid $colorProfileUnderline;
-  border-bottom: 1px solid $colorProfileUnderline;
+  border-top: 1px solid $color-profile-underline;
+  border-bottom: 1px solid $color-profile-underline;
   display: flex;
 }
 

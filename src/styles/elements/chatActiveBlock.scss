@@ -8,10 +8,10 @@
 }
 
 .activeChatHeading {
-  font-family: Inter;
+  font-family: Inter, sans-serif;
   height: 70px;
   display: flex;
-  border-bottom: 1px solid $colorLightGrey;
+  border-bottom: 1px solid $color-light-grey;
   width: 100%;
   align-items: center;
 }
@@ -47,7 +47,7 @@
 .activeChatFooter {
   display: flex;
   height: 54px;
-  border-top: 1px solid $colorLightGrey;
+  border-top: 1px solid $color-light-grey;
   padding: 10px;
   align-items: center;
   justify-content: space-between;
