@@ -1,0 +1,9 @@
+@import "../variables";
+
+.chatAside {
+  padding: 0 10px;
+  height: 100%;
+  width: 310px;
+  background-color: $color-aside-background;
+  border-right: 1px solid $color-profile-underline;
+}

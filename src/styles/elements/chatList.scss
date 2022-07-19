@@ -1,0 +1,46 @@
+@import "../variables";
+
+.chatList {
+  display: flex;
+  flex-direction: column;
+  font-family: Inter, sans-serif;
+
+}
+.chatProfileLink {
+  text-decoration: none;
+  color: $color-black-text;
+}
+.chatListItem {
+  height: 82px;
+  border-top: 1px solid $color-profile-underline;
+  border-bottom: 1px solid $color-profile-underline;
+  display: flex;
+}
+
+.chatListItemAvatarWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 68px;
+  height: 72px;
+}
+
+.chatListItemAvatar {
+  border-radius: 50%;
+  width: 48px;
+  height: 48px;
+}
+
+.chatListItemDataName {
+  font-weight: bold;
+  padding: 10px 10px 0;
+}
+
+// TODO: лучше функцией ограничить число символов, чтобы на 2 строки умещалось
+.chatListItemDataMessage {
+  padding: 10px;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  width: 190px;
+  white-space: nowrap;
+}

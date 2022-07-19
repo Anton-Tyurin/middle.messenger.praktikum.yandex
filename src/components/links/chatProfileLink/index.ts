@@ -1,0 +1,1 @@
+export { ChatProfileLink } from './chatProfileLink';

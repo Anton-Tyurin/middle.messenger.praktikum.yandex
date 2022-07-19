@@ -6,7 +6,7 @@
   width: 280px;
   height: 37px;
 
-  background: $colorLink;
+  background: $color-link;
   border-radius: 8px;
   border: none;
 
@@ -18,15 +18,12 @@
   transition: 300ms;
 }
 
-.submitButton:focus-visible {
-  outline: none;
-}
+
 
 .submitButton:active {
   background: #3535f3;
   -webkit-box-shadow: inset 0 0 5px #c1c1c1;
   -moz-box-shadow: inset 0 0 5px #c1c1c1;
   box-shadow: inset 0 0 5px #c1c1c1;
-  outline: none;
   transition: 300ms;
 }

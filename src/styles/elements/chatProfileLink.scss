@@ -1,0 +1,16 @@
+@import "../variables";
+
+.profileLinkWrapper {
+  text-align: right;
+  padding-top: 20px;
+  margin-left: 234px;
+}
+
+.profileLink {
+  text-decoration: none;
+}
+
+.profileLinkTitle {
+  font-family: Inter, sans-serif;
+  color: $color-label;
+}

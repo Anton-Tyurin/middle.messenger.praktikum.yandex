@@ -1,0 +1,14 @@
+@import "../variables";
+.activeChatInput {
+  width: 85%;
+}
+.chatMessageInput {
+  font-family: Inter, sans-serif;
+  width: 100%;
+  background: $color-light-grey;
+  border: 1px solid $color-light-grey;
+  border-radius: 30px;
+  height: 32px;
+  padding: 10px;
+}
+
