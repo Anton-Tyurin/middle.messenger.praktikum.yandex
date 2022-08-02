@@ -8,20 +8,44 @@ import avatarImg from '../../../../static/img/avatar/avatar.svg';
 import { ProfileInput } from '../../../components/inputs';
 import { SubmitButton } from '../../../components/submitButton';
 import { checkValidation, getFormData } from '../../../core/validate';
+import { Block } from '../../../core/Block';
+import { router } from '../../../router';
+import { UserController } from '../../../controlls/userController';
+import { getAvatar, getUserData } from '../utils';
+import { ROUTES } from '../../../constants/routes';
 
-export function profileEditPage() {
+const userController = new UserController();
+
+function profileEdit() {
   const template = Handlebars.compile(profile_edit_page_template);
-
-  const asideBackLink = new AsideBacklink({ linkHref: '/', backlink });
-  const avatar = new Avatar({ avatar: avatarImg });
+  const {
+    first_name, second_name, login, email, phone
+  } = getUserData() || {};
+  const avatarIcon = getAvatar();
+  const asideBackLink = new AsideBacklink({ backlink }, {
+    click: () => {
+      router.go(ROUTES.PROFILE);
+    }
+  });
+  const userAvatar = new Avatar({ avatar: avatarIcon || avatarImg, addMode: true }, {
+    change: async () => {
+      const input = document.getElementById('avatarUploader') as HTMLInputElement;
+      if (input) {
+        const image = document.getElementById('userAvatar') as HTMLImageElement;
+        const file = input.files[0];
+        console.log(file, image);
+        if (file && image) {
+          await userController.changeUserAvatar(file, image);
+        }
+      }
+    }
+  });
 
   const emailField = new ProfileInput({
     label: 'Почта',
     name: 'email',
-    value: 'pochta@yandex.ru',
-    type: 'text',
-    errorMessage: 'Неверная почта',
-    validationType: 'email'
+    value: email || '',
+    type: 'text'
   }, {
     focus: (event: Event) => {
       checkValidation({ event });
@@ -30,13 +54,11 @@ export function profileEditPage() {
       checkValidation({ event });
     }
   });
-  const login = new ProfileInput({
+  const loginField = new ProfileInput({
     label: 'Логин',
     type: 'text',
     name: 'login',
-    value: 'ivanivanov',
-    errorMessage: 'Неверный логин',
-    validationType: 'login'
+    value: login || ''
   }, {
     focus: (event: Event) => {
       checkValidation({ event });
@@ -45,13 +67,11 @@ export function profileEditPage() {
       checkValidation({ event });
     }
   });
-  const name = new ProfileInput({
+  const firstNameField = new ProfileInput({
     label: 'Имя',
     type: 'text',
-    name: 'name',
-    value: 'Иван',
-    errorMessage: 'Неверное имя',
-    validationType: 'name'
+    name: 'first_name',
+    value: first_name || ''
   }, {
     focus: (event: Event) => {
       checkValidation({ event });
@@ -60,14 +80,11 @@ export function profileEditPage() {
       checkValidation({ event });
     }
   });
-  const surname = new ProfileInput({
+  const secondNameField = new ProfileInput({
     label: 'Фамилия',
     type: 'text',
-    name: 'surname',
-    value: 'Иванов',
-    errorMessage: 'Неверное имя',
-    validationType: 'name'
-
+    name: 'second_name',
+    value: second_name || ''
   }, {
     focus: (event: Event) => {
       checkValidation({ event });
@@ -76,13 +93,11 @@ export function profileEditPage() {
       checkValidation({ event });
     }
   });
-  const phone = new ProfileInput({
+  const phoneField = new ProfileInput({
     label: 'Телефон',
     type: 'text',
     name: 'phone',
-    value: '+7(909)9673030',
-    errorMessage: 'Неверный телефон',
-    validationType: 'phone'
+    value: phone || ''
   }, {
     focus: (event: Event) => {
       checkValidation({ event });
@@ -95,16 +110,31 @@ export function profileEditPage() {
     text: 'Сохранить'
   }, {
     click: (event: Event) => {
-      getFormData(event);
+      getFormData(event).then((data: any) => userController.changeUserProfile({ ...data, display_name: `${first_name} ${second_name}` })).then((result) => {
+        if (result.success) {
+          router.go(ROUTES.PROFILE);
+        }
+      }).catch((e) => console.log(e));
     }
   });
 
   const context: TProfilePage = {
     asideBacklink: asideBackLink.transformToString(),
-    avatar: avatar.transformToString(),
-    inputs: [emailField.transformToString(), login.transformToString(), name.transformToString(),
-      surname.transformToString(), phone.transformToString()],
+    avatar: userAvatar.transformToString(),
+    inputs: [emailField.transformToString(), loginField.transformToString(), firstNameField.transformToString(),
+      secondNameField.transformToString(), phoneField.transformToString()],
     submitBtn: saveChangesButton.transformToString()
   };
   return template(context);
+}
+export class ProfileEditPage extends Block {
+  constructor(context: any, events = {}) {
+    super('div', {
+      context: {
+        ...context
+      },
+      template: profileEdit(),
+      events
+    });
+  }
 }

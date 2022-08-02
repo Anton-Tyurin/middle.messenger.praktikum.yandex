@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "target": "es2017",
+    "target": "es2019",
     "module": "commonjs",
     "typeRoots": ["node_modules/@types", "typings/app.d.ts"],
     "sourceMap": true,
@@ -8,11 +8,11 @@
     "forceConsistentCasingInFileNames": true,
     "strict": true,
     "noImplicitAny": true,
-    "strictNullChecks": true,
+    "strictNullChecks": false,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "skipLibCheck": true,
-    "jsx": "react"
+    "jsx": "react",
   },
   "include": ["src", "custom.d.ts"]
 }

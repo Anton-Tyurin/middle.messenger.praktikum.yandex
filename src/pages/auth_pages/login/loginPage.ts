@@ -5,8 +5,15 @@ import { SubmitButton } from '../../../components/submitButton';
 import { AuthLink } from '../../../components/links';
 import { TLoginScheme } from '../../../types/pages';
 import { checkValidation, getFormData } from '../../../core/validate';
+import { Block } from '../../../core/Block';
+import { router } from '../../../router';
+import { ROUTES } from '../../../constants/routes';
 
-export function loginPage() {
+import { AuthController } from '../../../controlls/authController';
+
+const controller = new AuthController();
+
+function loginPage() {
   const template = Handlebars.compile(login_page_template);
   const loginInput = new LoginInput({
     name: 'login',
@@ -42,12 +49,23 @@ export function loginPage() {
     text: 'Авторизироваться'
   }, {
     click: (event: Event) => {
-      getFormData(event);
+      getFormData(event)
+        .then((data: any) => controller.login(data).then((result) => {
+          if (result?.success) {
+            router.go(ROUTES.MAIN_CHAT);
+          } else {
+            router.go(ROUTES.PAGE_400);
+          }
+        }))
+        .catch((e) => console.log(e));
     }
   });
   const link = new AuthLink({
-    linkText: 'Нет аккаунта?',
-    linkHref: '/register'
+    linkText: 'Нет аккаунта?'
+  }, {
+    click: () => {
+      router.go(ROUTES.REGISTER);
+    }
   });
   const context: TLoginScheme = {
     inputs: [loginInput.transformToString(), passwordInput.transformToString()],
@@ -56,4 +74,16 @@ export function loginPage() {
     link: link.transformToString()
   };
   return template(context);
+}
+
+export class LoginPage extends Block {
+  constructor(context: any, events = {}) {
+    super('div', {
+      context: {
+        ...context
+      },
+      template: loginPage(),
+      events
+    });
+  }
 }

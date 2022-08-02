@@ -98,27 +98,32 @@ export const checkValidation = (data: {event?: Event | null, input?: HTMLInputEl
   }
 };
 
-export const getFormData = (event: Event) => {
+export const getFormData = (event: Event) => new Promise((resolve, reject): { data: any } => {
   const button = event.target as HTMLFormElement;
   const form = button?.parentElement?.closest('form');
-
   if (form) {
     const inputs = form.querySelectorAll('input');
     if (!inputs || inputs?.length === 0) {
       return;
     }
+    let hasError = false;
     // for of для меня лучше подходит, чем forEach, который рекомендуют на airBnb
     // https://github.com/airbnb/javascript/issues/1271
     /*eslint-disable */
-    for (const input of inputs) {
-      checkValidation({ input });
-    }
-    /* eslint-enable */
+        for (const input of inputs) {
+          hasError = checkValidation({ input });
+        }
+        /* eslint-enable */
     const result: Dictionary = [...inputs].reduce((model: Dictionary, input: HTMLInputElement) => {
       const { name, value } = input;
       model[name] = value;
       return model;
     }, {});
-    console.log(result);
+
+    if (hasError) {
+      reject('has validation error');
+    } else {
+      resolve(result);
+    }
   }
-};
+});

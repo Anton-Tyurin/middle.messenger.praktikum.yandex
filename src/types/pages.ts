@@ -1,9 +1,8 @@
 export type TErrorScheme = {
     code: string;
     title: string;
-    linkText: string;
     errorMessage: string;
-    linkPath: string;
+    link: string
 }
 
 export type TLoginScheme = {
@@ -22,4 +21,5 @@ export type TProfilePage = {
 export type TMainChat = {
     chatAside: string,
     chatMessageBlock: () => string
+    createChatModal: string
 }

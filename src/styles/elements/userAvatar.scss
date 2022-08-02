@@ -1,13 +1,26 @@
 @import "../variables";
 
 .userAvatar {
+
   text-align: center;
   color: $color-black-text;
   text-decoration: none;
 }
 
 .userAvatarWrapper {
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
   margin-bottom: 20px;
+}
+.userAvatarImg {
+  cursor: pointer;
+}
+
+.userAvatarInput {
+
 }
 
 .userAvatarName {

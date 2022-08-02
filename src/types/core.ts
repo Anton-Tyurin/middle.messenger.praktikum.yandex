@@ -3,8 +3,8 @@ import { METHODS } from '../constants/core';
 export type HTTPOptions = {
     headers?: Record<string, string>,
     method?: METHODS,
-    timeout?: number,
-    data?: Document | null
+    contentType?: string;
+    data?: any
 }
 
 export type TBlockProps = {
@@ -16,7 +16,9 @@ export type TBlockProps = {
 export type TMetaBlock = {
     tagName: string;
     props: Record<string, any>;
+    className?: string;
 }
 
 export const REJECT_TEXT = 'No method';
 export type Dictionary = Record<string, any>;
+export type Nullable<T> = T | null | undefined;

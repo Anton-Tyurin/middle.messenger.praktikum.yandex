@@ -5,11 +5,10 @@ import { chat_input_template } from './chatInput.template';
 
 export class ChatInput extends Block {
   constructor(context: TInputChats, events = {}) {
-    console.log(context);
     super('div', {
       context: {
         ...context,
-        id: uuidv4()
+        id: context.id || uuidv4()
       },
       template: chat_input_template,
       events

@@ -1,11 +1,11 @@
-export const chat_list_item_template = `<a class="chatProfileLink" href="/mainChat/activeDialog">
-        <li class="chatListItem">
-            <div class="chatListItemAvatarWrapper">
-                <img src="{{avatarEmpty}}" class="chatListItemAvatar">
+export const chat_list_item_template = `<a data-id={{id}} class="chatProfileLink">
+        <li data-id={{id}} class="chatListItem">
+            <div data-id={{id}}  class="chatListItemAvatarWrapper">
+                <img data-id={{id}} src="{{avatar}}" class="chatListItemAvatar">
             </div>
-            <div class="chatListItemDataWrapper">
-                <div class="chatListItemDataName">{{this.name}}</div>
-                <div class="chatListItemDataMessage">{{this.message}}</div>
+            <div data-id={{id}} class="chatListItemDataWrapper">
+                <div data-id={{id}}  class="chatListItemDataName">{{title}}</div>
+                <div data-id={{id}} class="chatListItemDataMessage">{{last_message}}</div>
             </div>
         </li>
     </a>`;

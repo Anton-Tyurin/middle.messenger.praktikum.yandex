@@ -1,10 +1,10 @@
 import { v4 as uuidv4 } from 'uuid';
 import { Block } from '../../../core/Block';
 import { chat_list_item_template } from './chatListItem.template';
-import { TChatListItem } from '../../../types/components';
+import { TChatData } from '../../../constants/api/chatApi';
 
 export class ChatListItem extends Block {
-  constructor(context: TChatListItem, events = {}) {
+  constructor(context: TChatData, events = {}) {
     super('div', {
       context: {
         ...context,

@@ -1,7 +1,5 @@
-export const aside_backlink_template = `<aside class="backLinkBlock">
+export const aside_backlink_template = `<aside data-id={{id}} class="backLinkBlock">
     <div class="backLinkWrapper">
-        <a href={{linkHref}}>
-            <img src={{backlink}} alt="backlink">
-        </a>
+        <img data-id={{id}} src={{backlink}} alt="backlink">
     </div>
 </aside>`;

@@ -1,6 +1,7 @@
 export const chat_aside_template = `
       <div class="chatAside">
             <div class="profileLinkWrapper">
+                {{{createChatButton}}}
                 {{{chatProfileLink}}}
             </div>
             <div class="searchInputWrapper">
@@ -12,6 +13,5 @@ export const chat_aside_template = `
             {{/each}}
             </ul>
         </div>
-
     </div>
     `;

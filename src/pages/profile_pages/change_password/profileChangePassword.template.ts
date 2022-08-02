@@ -2,7 +2,7 @@ export const profile_change_password_page_template = `
     <main class="wrapper">
         <div class="profilePageWrapper">
             {{{ asideBacklink }}}
-            <div class="profilePageMainContent">
+            <form class="profilePageMainContent">
 
                 {{{ avatar }}}
                 <div class="profilePageForm">
@@ -13,6 +13,6 @@ export const profile_change_password_page_template = `
                 <div class="profilePasswordChangeSubmitButtonWrapper">
                     {{{submitBtn}}}
                 </div>
-            </div>
+            </form>
         </div>
     </main>`;

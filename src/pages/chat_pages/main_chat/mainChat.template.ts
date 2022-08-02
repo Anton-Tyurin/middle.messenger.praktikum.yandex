@@ -5,6 +5,7 @@ export const main_chat_template = `
                 {{{chatAside}}}
                 {{{chatMessageBlock}}}
             </div>
+            {{{createChatModal}}}
         </div>
       </main>
     `;

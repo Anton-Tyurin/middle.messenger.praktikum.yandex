@@ -5,7 +5,7 @@ export type TInput = {
     type?: string,
     name?: string,
     errorMessage?: string
-    value?: string
+    value?: string | number
     fieldDisabled?: boolean
     validationType?: string
 }
@@ -15,18 +15,17 @@ export type TInputChats = TInput & {
 }
 
 export type TLink = {
-    linkHref?: string,
     linkText: string
 }
 
 export type TAsideBacklink = {
-    linkHref: string,
     backlink: string
 }
 
 export type TProfileAvatar = {
     profileName?: string,
     avatar: string
+    addMode?: boolean
 }
 
 export type TButton = {
@@ -41,4 +40,11 @@ export type TChatListItem = {
 }
 export type TEmptyChat = {
     title: string
+}
+
+export type TChatModalTemplate = {
+    chatModalInput: string,
+    chatModalOkButton: string,
+    chatModalCancelButton: string,
+    modalClassName: string,
 }

@@ -4,8 +4,14 @@ import { SubmitButton } from '../../../components/submitButton';
 import { AuthLink } from '../../../components/links';
 import { register_page_template } from './registerPage.template';
 import { checkValidation, getFormData } from '../../../core/validate';
+import { Block } from '../../../core/Block';
+import { router } from '../../../router';
+import { ROUTES } from '../../../constants/routes';
+import { AuthController } from '../../../controlls/authController';
 
-export function registerPage() {
+const controller = new AuthController();
+
+function registerPage() {
   const template = Handlebars.compile(register_page_template);
   const email = new LoginInput({
     label: 'Почта',
@@ -108,13 +114,24 @@ export function registerPage() {
   const submitButton = new SubmitButton({
     text: 'Зарегистрироваться'
   }, {
-    click: (event: Event) => {
-      getFormData(event);
+    click: async (event: Event) => {
+      await getFormData(event)
+        .then((data: any) => controller.signUp(data)).then((result) => {
+          if (result?.success) {
+            router.go(ROUTES.MAIN_CHAT);
+          } else {
+            router.go(ROUTES.PAGE_400);
+          }
+        })
+        .catch((e) => console.log(e));
     }
   });
   const link = new AuthLink({
-    linkText: 'Войти',
-    linkHref: '/login'
+    linkText: 'Войти'
+  }, {
+    click: () => {
+      router.go(ROUTES.LOGIN);
+    }
   });
   const context = {
     inputs: [email.transformToString(),
@@ -124,9 +141,21 @@ export function registerPage() {
       phone.transformToString(),
       password.transformToString(),
       passwordRepeat.transformToString()],
-    formHeading: 'Вход',
+    formHeading: 'Регистрация',
     submitButton: submitButton.transformToString(),
     link: link.transformToString()
   };
   return template(context);
+}
+
+export class RegisterPage extends Block {
+  constructor(context: any, events = {}) {
+    super('div', {
+      context: {
+        ...context
+      },
+      template: registerPage(),
+      events
+    });
+  }
 }

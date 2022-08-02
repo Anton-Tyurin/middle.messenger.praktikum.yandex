@@ -16,6 +16,12 @@
   align-items: center;
 }
 
+.activeButtonsGroupName {
+  display: flex;
+  margin-right: 20px;
+  gap: 24px;
+}
+
 .activeChatHeadingImageWrapper {
   display: flex;
   align-items: center;
@@ -42,6 +48,11 @@
   &:hover {
     cursor: pointer;
   }
+}
+
+.activeChatMainContent{
+  height: 100%;
+  position: relative;
 }
 
 .activeChatFooter {

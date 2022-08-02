@@ -4,7 +4,7 @@ export const error_template = `
             <div class="errorBlock">
                 <h1 class="errorCode">{{code}}</h1>
                 <p class="errorMessage">{{errorMessage}}</p>
-                <a class="link" href={{linkPath}}>{{linkText}}</a>
+                {{{link}}}
             </div> 
         </div>
     </main>`;
