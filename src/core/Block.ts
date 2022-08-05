@@ -17,7 +17,7 @@ export class Block {
   protected _template: Handlebars.TemplateDelegate<any>;
 
   /*eslint-disable */
-  constructor(tagName: string = 'div', props = {}, className?: string) {
+  constructor(tagName: string = "div", props = {}, className?: string) {
     /* eslint-enable */
     this._meta = {
       tagName,
@@ -56,9 +56,7 @@ export class Block {
     this.componentDidMount();
   }
 
-  componentDidMount() {
-
-  }
+  componentDidMount() {}
 
   _componentDidUpdate(oldProps: Dictionary, newProps: Dictionary) {
     const response = this.componentDidUpdate(oldProps, newProps);
@@ -125,11 +123,11 @@ export class Block {
     });
   }
 
-  _createDocumentElement(tagName: string, classNames?: string) {
+  private _createDocumentElement(tagName: string, classNames?: string) {
     const node = document.createElement(tagName);
     if (classNames) {
       /*eslint-disable */
-      for (const className of classNames.split(' ')) {
+      for (const className of classNames.split(" ")) {
         node.classList.add(className);
       }
       /* eslint-enable */
@@ -140,7 +138,7 @@ export class Block {
   _triggerEvent(event: Event, func: Function) {
     const target = event.target as HTMLElement;
     const id = target.getAttribute('data-id');
-    if (target && (this._elementId === id)) {
+    if (target && this._elementId === id) {
       event.preventDefault();
       func.call(this, event);
     }
@@ -150,9 +148,13 @@ export class Block {
     const { events = {} } = this.props;
     Object.keys(events).forEach((event) => {
       const root = document.querySelector('#root') as HTMLElement;
-      root.addEventListener(event, (e: Event) => {
-        this._triggerEvent(e, events[event]);
-      }, true);
+      root.addEventListener(
+        event,
+        (e: Event) => {
+          this._triggerEvent(e, events[event]);
+        },
+        true
+      );
     });
   }
 

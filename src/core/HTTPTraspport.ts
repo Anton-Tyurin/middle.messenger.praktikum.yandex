@@ -11,16 +11,24 @@ export class HTTPTransport {
   }
 
   /*eslint-disable */
-  public get<Response>(path = '/', data?: unknown, headers?: Record<string, string>): Promise<Response> {
+  public get<Response>(
+    path = "/",
+    data?: unknown,
+    headers?: Record<string, string>
+  ): Promise<Response> {
     return this.request<Response>(this.url + path, {
       method: METHODS.GET,
       data,
-      headers
+      headers,
     });
   }
   /* eslint-enable */
 
-  public post<Response = unknown>(path: string, data?: unknown, headers?: Record<string, string>): Promise<Response> {
+  public post<Response = unknown>(
+    path: string,
+    data?: unknown,
+    headers?: Record<string, string>
+  ): Promise<Response> {
     return this.request<Response>(this.url + path, {
       method: METHODS.POST,
       data,
@@ -28,7 +36,12 @@ export class HTTPTransport {
     });
   }
 
-  public put<Response = void>(path: string, data: unknown, headers?: Record<string, string>, contentType?: string): Promise<Response> {
+  public put<Response = void>(
+    path: string,
+    data: unknown,
+    headers?: Record<string, string>,
+    contentType?: string
+  ): Promise<Response> {
     return this.request<Response>(this.url + path, {
       method: METHODS.PUT,
       data,
@@ -37,7 +50,11 @@ export class HTTPTransport {
     });
   }
 
-  public patch<Response = void>(path: string, data: unknown, headers?: Record<string, string>): Promise<Response> {
+  public patch<Response = void>(
+    path: string,
+    data: unknown,
+    headers?: Record<string, string>
+  ): Promise<Response> {
     return this.request<Response>(this.url + path, {
       method: METHODS.PATCH,
       data,
@@ -45,7 +62,11 @@ export class HTTPTransport {
     });
   }
 
-  public delete<Response>(path: string, data?: unknown, headers?: Record<string, string>): Promise<Response> {
+  public delete<Response>(
+    path: string,
+    data?: unknown,
+    headers?: Record<string, string>
+  ): Promise<Response> {
     return this.request<Response>(this.url + path, {
       method: METHODS.DELETE,
       data,
@@ -53,7 +74,10 @@ export class HTTPTransport {
     });
   }
 
-  private request<Response>(url: string, options: HTTPOptions = { method: METHODS.GET }): Promise<Response> {
+  private request<Response>(
+    url: string,
+    options: HTTPOptions = { method: METHODS.GET }
+  ): Promise<Response> {
     const { method, data = {}, headers = {} } = options;
 
     return new Promise((resolve, reject) => {

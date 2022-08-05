@@ -1,6 +1,9 @@
 import { HTTPTransport } from '../core/HTTPTraspport';
 import {
-  CHAT_API, chatApiUrl, TChatUser, TCreateChat
+  CHAT_API,
+  chatApiUrl,
+  TChatUser,
+  TCreateChat
 } from '../constants/api/chatApi';
 
 const chatAPIInstance = new HTTPTransport(chatApiUrl);

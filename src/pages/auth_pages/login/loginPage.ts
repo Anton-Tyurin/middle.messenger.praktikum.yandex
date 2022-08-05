@@ -9,64 +9,76 @@ import { Block } from '../../../core/Block';
 import { router } from '../../../router';
 import { ROUTES } from '../../../constants/routes';
 
-import { AuthController } from '../../../controlls/authController';
+import { AuthController } from '../../../controllers/authController';
 
 const controller = new AuthController();
 
 function loginPage() {
   const template = Handlebars.compile(login_page_template);
-  const loginInput = new LoginInput({
-    name: 'login',
-    label: 'Логин',
-    type: 'text',
-    required: true,
-    errorMessage: 'Неверный логин',
-    validationType: 'login'
-  }, {
-    focus: (event: Event) => {
-      checkValidation({ event });
+  const loginInput = new LoginInput(
+    {
+      name: 'login',
+      label: 'Логин',
+      type: 'text',
+      required: true,
+      errorMessage: 'Неверный логин',
+      validationType: 'login'
     },
-    blur: (event: Event) => {
-      checkValidation({ event });
+    {
+      focus: (event: Event) => {
+        checkValidation({ event });
+      },
+      blur: (event: Event) => {
+        checkValidation({ event });
+      }
     }
-  });
-  const passwordInput = new LoginInput({
-    name: 'password',
-    label: 'Пароль',
-    type: 'password',
-    required: true,
-    errorMessage: 'Пароль не безопасен',
-    validationType: 'password'
-  }, {
-    focus: (event: Event) => {
-      checkValidation({ event });
+  );
+  const passwordInput = new LoginInput(
+    {
+      name: 'password',
+      label: 'Пароль',
+      type: 'password',
+      required: true,
+      errorMessage: 'Пароль не безопасен',
+      validationType: 'password'
     },
-    blur: (event: Event) => {
-      checkValidation({ event });
+    {
+      focus: (event: Event) => {
+        checkValidation({ event });
+      },
+      blur: (event: Event) => {
+        checkValidation({ event });
+      }
     }
-  });
-  const submitButton = new SubmitButton({
-    text: 'Авторизироваться'
-  }, {
-    click: (event: Event) => {
-      getFormData(event)
-        .then((data: any) => controller.login(data).then((result) => {
-          if (result?.success) {
-            router.go(ROUTES.MAIN_CHAT);
-          } else {
-            router.go(ROUTES.PAGE_400);
-          }
-        }))
-        .catch((e) => console.log(e));
+  );
+  const submitButton = new SubmitButton(
+    {
+      text: 'Авторизироваться'
+    },
+    {
+      click: (event: Event) => {
+        getFormData(event)
+          .then((data: any) => controller.login(data).then((result) => {
+            if (result?.success) {
+              router.go(ROUTES.MAIN_CHAT);
+            } else {
+              router.go(ROUTES.PAGE_400);
+            }
+          }))
+          .catch((e) => console.log(e));
+      }
     }
-  });
-  const link = new AuthLink({
-    linkText: 'Нет аккаунта?'
-  }, {
-    click: () => {
-      router.go(ROUTES.REGISTER);
+  );
+  const link = new AuthLink(
+    {
+      linkText: 'Нет аккаунта?'
+    },
+    {
+      click: () => {
+        router.go(ROUTES.REGISTER);
+      }
     }
-  });
+  );
   const context: TLoginScheme = {
     inputs: [loginInput.transformToString(), passwordInput.transformToString()],
     formHeading: 'Вход',

@@ -1,9 +1,14 @@
 import { Dictionary } from '../types/core';
 import { defaultChatWSUrl, TWebSocketParams } from '../constants/api/chatApi';
 
-export function createChatWebSocket(params: TWebSocketParams, onMessageFunc?: (data: Dictionary) => void) {
+export function createChatWebSocket(
+  params: TWebSocketParams,
+  onMessageFunc?: (data: Dictionary) => void
+) {
   const { userId, chatId, token } = params;
-  const socket = new WebSocket(`${defaultChatWSUrl}chats/${userId}/${chatId}/${token}`);
+  const socket = new WebSocket(
+    `${defaultChatWSUrl}chats/${userId}/${chatId}/${token}`
+  );
 
   socket.addEventListener('open', () => {
     console.log('Соединение установлено');
@@ -27,7 +32,11 @@ export function createChatWebSocket(params: TWebSocketParams, onMessageFunc?: (d
 
     if (onMessageFunc && data) {
       console.log(data);
-      onMessageFunc(JSON.parse(data));
+      try {
+        onMessageFunc(JSON.parse(data));
+      } catch (e: any) {
+        console.error(e);
+      }
     }
   });
 

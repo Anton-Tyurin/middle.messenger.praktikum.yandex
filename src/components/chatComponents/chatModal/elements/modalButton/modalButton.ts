@@ -3,7 +3,10 @@ import { Block } from '../../../../../core/Block';
 import { modal_button_template } from './modalButton.template';
 
 export class ModalButton extends Block {
-  constructor(context: {}, events = {}) {
+  constructor(
+    context: { buttonText: string },
+    events: { click?: () => void } = {}
+  ) {
     super('div', {
       context: {
         ...context,

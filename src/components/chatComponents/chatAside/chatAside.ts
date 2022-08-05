@@ -10,12 +10,19 @@ export class ChatAside extends Block {
     super('div', {
       context: {
         ...context,
-        chatProfileLink: new ChatProfileLink({ linkText: 'Профиль' }, {
-          click: () => {
-            router.go(ROUTES.PROFILE);
+        chatProfileLink: new ChatProfileLink(
+          { linkText: 'Профиль' },
+          {
+            click: () => {
+              router.go(ROUTES.PROFILE);
+            }
           }
-        }).transformToString(),
-        searchInput: new ChatInput({ label: 'Поиск', chatInputClass: 'chatSearchInput', chatInputWrapperClass: 'chatSearchInputWrapper' }).transformToString()
+        ).transformToString(),
+        searchInput: new ChatInput({
+          label: 'Поиск',
+          chatInputClass: 'chatSearchInput',
+          chatInputWrapperClass: 'chatSearchInputWrapper'
+        }).transformToString()
       },
       template: chat_aside_template,
       events

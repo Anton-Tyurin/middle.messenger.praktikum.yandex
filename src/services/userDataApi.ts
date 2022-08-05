@@ -1,4 +1,8 @@
-import { defaultUserUrl, TPasswordData, USER_API } from '../constants/api/userApi';
+import {
+  defaultUserUrl,
+  TPasswordData,
+  USER_API
+} from '../constants/api/userApi';
 import { TSignUpData } from '../types/auth';
 import { HTTPTransport } from '../core/HTTPTraspport';
 

@@ -1,12 +1,5 @@
 import { Dictionary } from '../types/core';
-import { checkIfEqual } from '../utils/router';
-
-const render = (block: any) => {
-  const root: HTMLElement | null = document.getElementById('root');
-  if (root) {
-    root.innerHTML = block.transformToString();
-  }
-};
+import { checkIfEqual, render } from '../utils/router';
 
 export class Route {
   _pathname: string;

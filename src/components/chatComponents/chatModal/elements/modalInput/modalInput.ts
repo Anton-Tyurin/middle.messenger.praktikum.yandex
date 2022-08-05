@@ -3,7 +3,7 @@ import { Block } from '../../../../../core/Block';
 import { modal_input_template } from './modalInput.template';
 
 export class ModalInput extends Block {
-  constructor(context: {}, events = {}) {
+  constructor(context: {inputId?: string, placeholder: string}, events = {}) {
     super('div', {
       context: {
         ...context,

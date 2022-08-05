@@ -2,8 +2,11 @@ import { Dictionary } from '../types/core';
 import { regexp } from '../constants/regexp';
 
 const showWarningMessage = (input: HTMLInputElement, isError: boolean) => {
-  const parent = input?.parentElement?.closest('.profileFormItem') || input?.parentElement?.closest('.formItem');
-  const messageElement = parent && (parent.querySelector('.formItemError') || parent.querySelector('.formItemErrorProfile'));
+  const parent = input?.parentElement?.closest('.profileFormItem')
+    || input?.parentElement?.closest('.formItem');
+  const messageElement = parent
+    && (parent.querySelector('.formItemError')
+      || parent.querySelector('.formItemErrorProfile'));
   if (messageElement) {
     if (isError) {
       messageElement.classList.remove('hidden');
@@ -18,7 +21,7 @@ const checkLoginField = (input: HTMLInputElement): boolean => {
   if (input) {
     const { checkLogin } = regexp;
     const { value } = input;
-    isError = !value.match(checkLogin) || (value.length < 3 || value.length > 20);
+    isError = !value.match(checkLogin) || value.length < 3 || value.length > 20;
     showWarningMessage(input, isError);
   }
   return isError;
@@ -29,7 +32,7 @@ const checkPasswordField = (input: HTMLInputElement): boolean => {
   if (input) {
     const { checkPassword } = regexp;
     const { value } = input;
-    isError = !value.match(checkPassword) || (value.length < 8 || value.length > 40);
+    isError = !value.match(checkPassword) || value.length < 8 || value.length > 40;
     showWarningMessage(input, isError);
   }
   return isError;
@@ -40,7 +43,7 @@ const checkPhoneNumberField = (input: HTMLInputElement): boolean => {
   if (input) {
     const { checkPhoneNumber } = regexp;
     const { value } = input;
-    isError = !value.match(checkPhoneNumber) || (value.length < 10 || value.length > 15);
+    isError = !value.match(checkPhoneNumber) || value.length < 10 || value.length > 15;
     showWarningMessage(input, isError);
   }
   return isError;
@@ -77,8 +80,11 @@ const checkMessageField = (input: HTMLInputElement): boolean => {
   return isError;
 };
 
-export const checkValidation = (data: {event?: Event | null, input?: HTMLInputElement}): boolean => {
-  const input = data.event?.target as HTMLInputElement || data.input;
+export const checkValidation = (data: {
+  event?: Event | null;
+  input?: HTMLInputElement;
+}): boolean => {
+  const input = (data.event?.target as HTMLInputElement) || data.input;
   const type = input.getAttribute('validation-type') || 'text';
   switch (type) {
     case 'password':
@@ -110,15 +116,18 @@ export const getFormData = (event: Event) => new Promise((resolve, reject): { da
     // for of для меня лучше подходит, чем forEach, который рекомендуют на airBnb
     // https://github.com/airbnb/javascript/issues/1271
     /*eslint-disable */
-        for (const input of inputs) {
-          hasError = checkValidation({ input });
-        }
-        /* eslint-enable */
-    const result: Dictionary = [...inputs].reduce((model: Dictionary, input: HTMLInputElement) => {
-      const { name, value } = input;
-      model[name] = value;
-      return model;
-    }, {});
+      for (const input of inputs) {
+        hasError = checkValidation({ input });
+      }
+      /* eslint-enable */
+    const result: Dictionary = [...inputs].reduce(
+      (model: Dictionary, input: HTMLInputElement) => {
+        const { name, value } = input;
+        model[name] = value;
+        return model;
+      },
+      {}
+    );
 
     if (hasError) {
       reject('has validation error');

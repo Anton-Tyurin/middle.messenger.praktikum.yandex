@@ -12,7 +12,14 @@ function error500Template() {
     code: '500',
     title: '500_page',
     errorMessage: 'Мы уже фиксим',
-    link: new AuthLink({ linkText: 'Назад к чатам' }, { click: () => { router.go(ROUTES.MAIN_CHAT); } }).transformToString()
+    link: new AuthLink(
+      { linkText: 'Назад к чатам' },
+      {
+        click: () => {
+          router.go(ROUTES.MAIN_CHAT);
+        }
+      }
+    ).transformToString()
   };
   return template(context);
 }

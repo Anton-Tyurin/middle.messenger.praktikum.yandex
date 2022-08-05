@@ -3,7 +3,7 @@ import { Block } from '../../../core/Block';
 import { create_chat_button_template } from './createChatButton.template';
 
 export class CreateChatButton extends Block {
-  constructor(context: {}, events = {}) {
+  constructor(context: {buttonText: string}, events: {click?: () => void} = {}) {
     super('div', {
       context: {
         ...context,

@@ -11,7 +11,7 @@ import { Block } from '../../../core/Block';
 import { router } from '../../../router';
 import { ROUTES } from '../../../constants/routes';
 import { getFormData } from '../../../core/validate';
-import { UserController } from '../../../controlls/userController';
+import { UserController } from '../../../controllers/userController';
 import { getAvatar } from '../utils';
 
 const userController = new UserController();
@@ -20,11 +20,15 @@ function profileChangePassword() {
   const template = Handlebars.compile(profile_change_password_page_template);
   const avatarIcon = getAvatar();
 
-  const asideBackLink = new AsideBacklink({ backlink }, {
-    click: () => {
-      router.go(ROUTES.PROFILE);
+  const asideBackLink = new AsideBacklink(
+    { backlink },
+    {
+      click: () => {
+        router.go(ROUTES.PROFILE);
+      }
     }
-  }); const avatar = new Avatar({ avatar: avatarIcon || avatarImg });
+  );
+  const avatar = new Avatar({ avatar: avatarIcon || avatarImg });
   const oldPassword = new ProfileInput({
     label: 'Старый пароль',
     type: 'password',
@@ -45,29 +49,39 @@ function profileChangePassword() {
     name: 'passwordConfirm',
     value: ''
   });
-  const saveChangesButton = new SubmitButton({
-    text: 'Сохранить'
-  }, {
-    click: (event: Event) => {
-      getFormData(event).then((data: any) => {
-        /*eslint-disable */
-        // @ts-ignore
-        const { passwordConfirm } = data;
-        /* eslint-enable */
-        return userController.changeUserPassword(data);
-      }).then((result) => {
-        if (result.success) {
-          router.go(ROUTES.PROFILE);
-        }
-      }).catch((e) => console.log(e));
+  const saveChangesButton = new SubmitButton(
+    {
+      text: 'Сохранить'
+    },
+    {
+      click: (event: Event) => {
+        getFormData(event)
+          .then((data: any) => {
+            /*eslint-disable */
+            // @ts-ignore
+            const { passwordConfirm } = data;
+            /* eslint-enable */
+            return userController.changeUserPassword(data);
+          })
+          .then((result) => {
+            if (result.success) {
+              router.go(ROUTES.PROFILE);
+            }
+          })
+          .catch((e) => console.log(e));
+      }
     }
-  });
+  );
 
   const context: TProfilePage = {
     asideBacklink: asideBackLink.transformToString(),
     avatar: avatar.transformToString(),
     submitBtn: saveChangesButton.transformToString(),
-    inputs: [oldPassword.transformToString(), newPassword.transformToString(), newPasswordRepeat.transformToString()]
+    inputs: [
+      oldPassword.transformToString(),
+      newPassword.transformToString(),
+      newPasswordRepeat.transformToString()
+    ]
   };
 
   return template(context);

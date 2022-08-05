@@ -12,7 +12,7 @@
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "skipLibCheck": true,
-    "jsx": "react",
+    "jsx": "react"
   },
   "include": ["src", "custom.d.ts"]
 }

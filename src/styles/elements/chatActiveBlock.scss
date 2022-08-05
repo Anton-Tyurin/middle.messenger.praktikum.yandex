@@ -2,7 +2,7 @@
 
 .activeChatBlockSelected {
   display: flex;
-  width: calc( 100% - 310px);
+  width: calc(100% - 310px);
   flex-direction: column;
   justify-content: space-between;
 }
@@ -50,7 +50,7 @@
   }
 }
 
-.activeChatMainContent{
+.activeChatMainContent {
   height: 100%;
   position: relative;
 }

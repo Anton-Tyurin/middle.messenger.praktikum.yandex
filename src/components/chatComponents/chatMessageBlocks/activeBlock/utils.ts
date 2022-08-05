@@ -1,13 +1,14 @@
 import { TChatData } from '../../../../constants/api/chatApi';
-import { router } from '../../../../router';
-import store from '../../../../store';
 import { Dictionary } from '../../../../types/core';
-import { ChatController } from '../../../../controlls/chatControll';
-import { ROUTES } from '../../../../constants/routes';
+import { ChatController } from '../../../../controllers/chatController';
 
 const chatController = new ChatController();
 
-export const getDataFromChat = (currentChatId: string, localStorageKey: string, valueKey: string) => {
+export const getDataFromChat = (
+  currentChatId: string,
+  localStorageKey: string,
+  valueKey: string
+) => {
   let value: string | string[] = valueKey === 'users' ? [] : '';
   const item = localStorage.getItem(localStorageKey);
   let chats;
@@ -16,9 +17,12 @@ export const getDataFromChat = (currentChatId: string, localStorageKey: string, 
   }
 
   if (currentChatId && chats) {
-    const chat = chats.filter((el: TChatData) => (el.id).toString() === currentChatId);
-    if (chat.length > 0) {
-      value = chat[0][valueKey];
+    const currentChat = chats.filter(
+      (chat: TChatData) => chat.id.toString() === currentChatId
+    );
+    if (currentChat.length > 0) {
+      const firstElem = 0;
+      value = currentChat[firstElem][valueKey];
     }
   }
 
@@ -39,9 +43,7 @@ export const addUsersToChat = async (chatId: string) => {
   const users = input.value.split(',');
 
   await chatController.addUser({ users, chatId: parseInt(chatId, 10) });
-  store.setStateAndPersist({ usersInChats: [{ id: chatId, users }] });
-  closeUserModal('addUsersModal', 'addUserInput');
-  router.go(ROUTES.MAIN_CHAT_ACTIVE_DIALOG);
+  return { usersInChats: [{ id: chatId, users }] };
 };
 
 export const removeUsersFromChat = async (chatId: string) => {
@@ -49,13 +51,13 @@ export const removeUsersFromChat = async (chatId: string) => {
   const users = input.value.split(',');
 
   await chatController.removeUser({ users, chatId: parseInt(chatId, 10) });
-  store.setStateAndPersist({ usersInChats: [{ id: chatId, users }] });
-  closeUserModal('deleteUsersModal', 'deleteUsersInput');
-  router.go(ROUTES.MAIN_CHAT_ACTIVE_DIALOG);
+  return { usersInChats: [{ id: chatId, users }] };
 };
 
 export const sendMessage = (socket: WebSocket) => {
-  const messageInput = document.getElementById('messageInput') as HTMLInputElement;
+  const messageInput = document.getElementById(
+    'messageInput'
+  ) as HTMLInputElement;
   const message = {
     content: messageInput.value,
     type: 'message'
@@ -64,17 +66,19 @@ export const sendMessage = (socket: WebSocket) => {
   messageInput.value = '';
 };
 
-export const getMessages = (socket: WebSocket) => {
+export const openMessagesSocket = (socket: WebSocket) => {
   socket.addEventListener('open', () => {
-    socket.send(JSON.stringify({
-      content: '0',
-      type: 'get old'
-    }));
+    socket.send(
+      JSON.stringify({
+        content: '0',
+        type: 'get old'
+      })
+    );
   });
 };
 
-export const handleMessages = (message: Dictionary | Dictionary []) => {
-  const isMessagesArray = message instanceof Array;
+export const handleMessages = (messages: Dictionary | Dictionary[]) => {
+  const isMessagesArray = messages instanceof Array;
 
   const addMessage = (elem: Dictionary) => {
     if (elem?.content) {
@@ -87,9 +91,9 @@ export const handleMessages = (message: Dictionary | Dictionary []) => {
   };
 
   if (isMessagesArray) {
-    message.map((el: Dictionary) => addMessage(el));
+    messages.forEach((el: Dictionary) => addMessage(el));
   } else {
-    addMessage(message);
+    addMessage(messages);
   }
 };
 

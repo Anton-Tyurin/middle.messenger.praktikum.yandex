@@ -13,7 +13,14 @@ function error404Template() {
     code: '404',
     title: '404_page',
     errorMessage: 'Не туда попали',
-    link: new AuthLink({ linkText: 'Назад к чатам' }, { click: () => { router.go(ROUTES.MAIN_CHAT); } }).transformToString()
+    link: new AuthLink(
+      { linkText: 'Назад к чатам' },
+      {
+        click: () => {
+          router.go(ROUTES.MAIN_CHAT);
+        }
+      }
+    ).transformToString()
   };
   return template(context);
 }

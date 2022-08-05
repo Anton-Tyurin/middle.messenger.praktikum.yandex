@@ -1,6 +1,6 @@
 import { router } from '../../../router';
 import { ROUTES } from '../../../constants/routes';
-import { ChatController } from '../../../controlls/chatControll';
+import { ChatController } from '../../../controllers/chatController';
 import { TChatData } from '../../../constants/api/chatApi';
 import avatarImg from '../../../../static/img/avatar/avatar.svg';
 import { ChatListItem } from '../../../components/chatComponents';
@@ -60,20 +60,26 @@ export const getListItems = (): string[] => {
         avatar: el.avatar || avatarImg,
         last_message: content
       };
-      const chatItem = new ChatListItem({
-        ...elemData
-      }, {
-        click: async () => {
-          console.log(elemData);
-          await openSelectedChat(elemData);
+      const chatItem = new ChatListItem(
+        {
+          ...elemData
+        },
+        {
+          click: async () => {
+            console.log(elemData);
+            await openSelectedChat(elemData);
+          }
         }
-      });
+      );
       return chatItem.transformToString();
     });
   }
   return [];
 };
 
-export const createChatButton = () => new CreateChatButton({ buttonText: 'Создать новый чат' }, {
-  click: () => showModal()
-});
+export const createChatButton = () => new CreateChatButton(
+  { buttonText: 'Создать новый чат' },
+  {
+    click: () => showModal()
+  }
+);

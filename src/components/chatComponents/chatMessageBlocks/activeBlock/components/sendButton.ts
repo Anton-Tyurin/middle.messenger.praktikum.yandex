@@ -3,7 +3,7 @@ import { send_button_template } from './sendButton.template';
 import { Block } from '../../../../../core/Block';
 
 export class SendButton extends Block {
-  constructor(context: {}, events = {}) {
+  constructor(context: {forwardLink: string}, events: {click?: () => void} = {}) {
     super('div', {
       context: {
         ...context,

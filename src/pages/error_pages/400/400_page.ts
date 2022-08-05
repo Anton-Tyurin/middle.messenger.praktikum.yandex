@@ -13,7 +13,14 @@ function error400Template() {
     code: '400',
     title: '400_page',
     errorMessage: 'Пользователь уже зарегистрирован',
-    link: new AuthLink({ linkText: 'К форме авторизации' }, { click: () => { router.go(ROUTES.LOGIN); } }).transformToString()
+    link: new AuthLink(
+      { linkText: 'К форме авторизации' },
+      {
+        click: () => {
+          router.go(ROUTES.LOGIN);
+        }
+      }
+    ).transformToString()
   };
   return template(context);
 }

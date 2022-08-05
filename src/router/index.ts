@@ -7,10 +7,10 @@ import {
   ProfileChangePasswordPage,
   ProfileEditPage,
   ProfilePage,
-  RegisterPage
+  RegisterPage,
+  MainChatPage
 } from '../pages';
 import { ROUTES } from '../constants/routes';
-import { MainChatPage } from '../pages';
 
 export const router = new Router('.root');
 

@@ -35,7 +35,8 @@ export class UserController {
 
     reader.onload = async (ev) => {
       const base64 = ev.target.result;
-      image.src = base64 as string;
+      const newImage = { ...image };
+      newImage.src = base64 as string;
       store.setStateAndPersist({ avatarIcon: base64 }, true);
     };
 

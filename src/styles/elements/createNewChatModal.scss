@@ -1,4 +1,6 @@
-.createChatModal, .addUsersModal, .deleteUsersModal {
+.createChatModal,
+.addUsersModal,
+.deleteUsersModal {
   position: absolute;
   width: 400px;
   height: 210px;
@@ -11,7 +13,8 @@
   border-radius: 10px;
 }
 
-.addUsersModal, .deleteUsersModal {
+.addUsersModal,
+.deleteUsersModal {
   top: 30%;
   left: 30%;
 }
@@ -20,7 +23,6 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-
 
   height: 100%;
   justify-content: center;

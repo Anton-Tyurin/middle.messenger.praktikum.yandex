@@ -11,7 +11,7 @@ import { router } from '../../../router';
 import { ROUTES } from '../../../constants/routes';
 import { Avatar } from '../../../components/avatar';
 import { getAvatar, getUserData } from '../utils';
-import { AuthController } from '../../../controlls/authController';
+import { AuthController } from '../../../controllers/authController';
 import avatarImg from '../../../../static/img/avatar/avatar.svg';
 
 const authController = new AuthController();
@@ -23,17 +23,26 @@ function profilePage() {
   } = getUserData() || {};
   const avatarIcon = getAvatar();
 
-  const asideBackLink = new AsideBacklink({ backlink }, {
-    click: () => {
-      router.go(ROUTES.MAIN_CHAT);
+  const asideBackLink = new AsideBacklink(
+    { backlink },
+    {
+      click: () => {
+        router.go(ROUTES.MAIN_CHAT);
+      }
     }
-  });
+  );
 
-  const userAvatar = new Avatar({ profileName: `${first_name} ${second_name}`, avatar: avatarIcon || avatarImg }, {
-    click: () => {
-      router.go(ROUTES.PROFILE_EDIT);
+  const userAvatar = new Avatar(
+    {
+      profileName: `${first_name} ${second_name}`,
+      avatar: avatarIcon || avatarImg
+    },
+    {
+      click: () => {
+        router.go(ROUTES.PROFILE_EDIT);
+      }
     }
-  });
+  );
 
   const emailField = new ProfileInput({
     label: 'Почта',
@@ -70,34 +79,52 @@ function profilePage() {
     value: phone || '',
     fieldDisabled: true
   });
-  const editLink = new ProfileLink({
-    linkText: 'Изменить данные'
-  }, {
-    click: () => {
-      router.go(ROUTES.PROFILE_EDIT);
+  const editLink = new ProfileLink(
+    {
+      linkText: 'Изменить данные'
+    },
+    {
+      click: () => {
+        router.go(ROUTES.PROFILE_EDIT);
+      }
     }
-  });
-  const changePasswordLink = new ProfileLink({
-    linkText: 'Изменить пароль'
-  }, {
-    click: () => {
-      router.go(ROUTES.PROFILE_CHANGE_PASSWORD);
+  );
+  const changePasswordLink = new ProfileLink(
+    {
+      linkText: 'Изменить пароль'
+    },
+    {
+      click: () => {
+        router.go(ROUTES.PROFILE_CHANGE_PASSWORD);
+      }
     }
-  });
-  const exitLink = new ProfileLinkWarning({
-    linkText: 'Выйти'
-  }, {
-    click: async () => {
-      await authController.logOut();
-      router.go('/');
+  );
+  const exitLink = new ProfileLinkWarning(
+    {
+      linkText: 'Выйти'
+    },
+    {
+      click: async () => {
+        await authController.logOut();
+        router.go('/');
+      }
     }
-  });
+  );
   const context: TProfilePage = {
     asideBacklink: asideBackLink.transformToString(),
     avatar: userAvatar.transformToString(),
-    inputs: [emailField.transformToString(), loginField.transformToString(), firstNameField.transformToString(),
-      secondNameField.transformToString(), phoneField.transformToString()],
-    links: [editLink.transformToString(), changePasswordLink.transformToString(), exitLink.transformToString()]
+    inputs: [
+      emailField.transformToString(),
+      loginField.transformToString(),
+      firstNameField.transformToString(),
+      secondNameField.transformToString(),
+      phoneField.transformToString()
+    ],
+    links: [
+      editLink.transformToString(),
+      changePasswordLink.transformToString(),
+      exitLink.transformToString()
+    ]
   };
 
   return template(context);
