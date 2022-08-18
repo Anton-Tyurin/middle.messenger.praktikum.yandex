@@ -13,8 +13,13 @@
 - `npm run lint:scss:fix` - запуск проверки и автоматическое исправление стилей scss через stylelint
 
 ## Netlify
+
 ссылка: https://subtle-alpaca-d51cfe.netlify.app/
+
 # Figma
+
 ссылка: https://www.figma.com/file/jF5fFFzgGOxQeB4CmKWTiE/Chat_external_link?node-id=0%3A1
+
 ## Pull Request (sprint_2)
+
 ссылка: https://github.com/Anton-Tyurin/middle.messenger.praktikum.yandex/pull/2

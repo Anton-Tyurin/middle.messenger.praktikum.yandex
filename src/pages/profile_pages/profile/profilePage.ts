@@ -2,73 +2,142 @@ import * as Handlebars from 'handlebars';
 import { TProfilePage } from '../../../types/pages';
 import { profile_page_template } from './profilePage.template';
 import { AsideBacklink } from '../../../components/asideBacklink';
-import { Avatar } from '../../../components/avatar';
 import { ProfileInput } from '../../../components/inputs';
 import { ProfileLink, ProfileLinkWarning } from '../../../components/links';
 
-import avatarImg from '../../../../static/img/avatar/avatar.svg';
 import backlink from '../../../../static/img/backLink/backLink.svg';
+import { Block } from '../../../core/Block';
+import { router } from '../../../router';
+import { ROUTES } from '../../../constants/routes';
+import { Avatar } from '../../../components/avatar';
+import { getAvatar, getUserData } from '../utils';
+import { AuthController } from '../../../controllers/authController';
+import avatarImg from '../../../../static/img/avatar/avatar.svg';
 
-export function profilePage() {
+const authController = new AuthController();
+
+function profilePage() {
   const template = Handlebars.compile(profile_page_template);
+  const {
+    first_name, second_name, login, email, phone
+  } = getUserData() || {};
+  const avatarIcon = getAvatar();
 
-  const asideBackLink = new AsideBacklink({ linkHref: '/', backlink });
-  const avatar = new Avatar({ profileName: 'Иван', avatar: avatarImg });
+  const asideBackLink = new AsideBacklink(
+    { backlink },
+    {
+      click: () => {
+        router.go(ROUTES.MAIN_CHAT);
+      }
+    }
+  );
+
+  const userAvatar = new Avatar(
+    {
+      profileName: `${first_name} ${second_name}`,
+      avatar: avatarIcon || avatarImg
+    },
+    {
+      click: () => {
+        router.go(ROUTES.PROFILE_EDIT);
+      }
+    }
+  );
 
   const emailField = new ProfileInput({
     label: 'Почта',
     name: 'email',
-    value: 'pochta@yandex.ru',
+    value: email || '',
     type: 'text',
     fieldDisabled: true
   });
-  const login = new ProfileInput({
+  const loginField = new ProfileInput({
     label: 'Логин',
     type: 'text',
     name: 'login',
-    value: 'ivanivanov',
+    value: login || '',
     fieldDisabled: true
   });
-  const name = new ProfileInput({
+  const firstNameField = new ProfileInput({
     label: 'Имя',
     type: 'text',
-    name: 'name',
-    value: 'Иван',
+    name: 'first_name',
+    value: first_name || '',
     fieldDisabled: true
   });
-  const surname = new ProfileInput({
+  const secondNameField = new ProfileInput({
     label: 'Фамилия',
     type: 'text',
-    name: 'surname',
-    value: 'Иванов',
+    name: 'second_name',
+    value: second_name || '',
     fieldDisabled: true
   });
-  const phone = new ProfileInput({
+  const phoneField = new ProfileInput({
     label: 'Телефон',
     type: 'text',
     name: 'phone',
-    value: '+7(909)9673030',
+    value: phone || '',
     fieldDisabled: true
   });
-  const editLink = new ProfileLink({
-    linkHref: './profileEdit',
-    linkText: 'Изменить данные'
-  });
-  const changePasswordLink = new ProfileLink({
-    linkHref: './profileChangePassword',
-    linkText: 'Изменить пароль'
-  });
-  const exitLink = new ProfileLinkWarning({
-    linkHref: './',
-    linkText: 'Выйти'
-  });
+  const editLink = new ProfileLink(
+    {
+      linkText: 'Изменить данные'
+    },
+    {
+      click: () => {
+        router.go(ROUTES.PROFILE_EDIT);
+      }
+    }
+  );
+  const changePasswordLink = new ProfileLink(
+    {
+      linkText: 'Изменить пароль'
+    },
+    {
+      click: () => {
+        router.go(ROUTES.PROFILE_CHANGE_PASSWORD);
+      }
+    }
+  );
+  const exitLink = new ProfileLinkWarning(
+    {
+      linkText: 'Выйти'
+    },
+    {
+      click: async () => {
+        await authController.logOut();
+        router.go('/');
+      }
+    }
+  );
   const context: TProfilePage = {
     asideBacklink: asideBackLink.transformToString(),
-    avatar: avatar.transformToString(),
-    inputs: [emailField.transformToString(), login.transformToString(), name.transformToString(),
-      surname.transformToString(), phone.transformToString()],
-    links: [editLink.transformToString(), changePasswordLink.transformToString(), exitLink.transformToString()]
+    avatar: userAvatar.transformToString(),
+    inputs: [
+      emailField.transformToString(),
+      loginField.transformToString(),
+      firstNameField.transformToString(),
+      secondNameField.transformToString(),
+      phoneField.transformToString()
+    ],
+    links: [
+      editLink.transformToString(),
+      changePasswordLink.transformToString(),
+      exitLink.transformToString()
+    ]
   };
 
   return template(context);
+}
+
+export class ProfilePage extends Block {
+  constructor(context: any, events = {}) {
+    super('div', {
+      context: {
+        ...context
+      },
+      template: profilePage(),
+      events
+    });
+  }
 }

@@ -3,7 +3,7 @@
 .profileFormItem {
   width: 510px;
 
-  font-family: 'Inter', sans-serif;
+  font-family: "Inter", sans-serif;
   font-style: normal;
 }
 
@@ -34,11 +34,8 @@
   width: 510px;
   margin-bottom: 10px;
 
-
   border: 1px solid $color-profile-underline;
 }
-
-
 
 .profileLinksBlock .formUnderline:last-child {
   display: none;

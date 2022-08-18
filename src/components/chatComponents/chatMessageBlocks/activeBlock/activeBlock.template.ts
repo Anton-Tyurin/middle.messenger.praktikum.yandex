@@ -4,11 +4,15 @@ export const active_block_template = `<div class="activeChatBlockSelected">
                 <img src="{{avatarEmpty}}" class="activeChatHeadingImage">
             </div>
             <div class="activeChatName">{{chatTitle}}</div>
-            <div class="activeChatSettingsWrapper">
-                <img src="{{chatParameters}}" class="activeChatSettingsImage">
+            <div class="activeButtonsGroupName">
+                {{{addUserModalButton}}}
+                {{{deleteUserModalButton}}}
             </div>
         </div>
-        <div class="activeChatMainContent"></div>
+        <div class="activeChatMainContent" id="messagesContainer">
+            {{{addUserModal}}}
+            {{{deleteUserModal}}}
+        </div>
         <form class="activeChatFooter">
             <div class="activeChatAddButtonWrapper">
                 <img src="{{addFile}}" class="activeChatAddButtonImage">
@@ -17,7 +21,7 @@ export const active_block_template = `<div class="activeChatBlockSelected">
                 {{{message}}}
             </div>
             <div class="activeChatSendWrapper">
-                <img src="{{forwardLink}}" class="activeChatSendImage">
+                {{{sendButton}}}
             </div>
         </form>
     </div>`;

@@ -14,7 +14,7 @@
   flex-direction: column;
   width: 280px;
 }
-.formItemLabel{
+.formItemLabel {
   color: $color-label;
   margin-bottom: 8px;
 
@@ -31,15 +31,13 @@
   margin-bottom: 8px;
 }
 
-
-.formUnderline{
+.formUnderline {
   width: 280px;
 
   border: 1px solid $color-link;
 }
 
 .formItemError {
-
   font-style: normal;
   font-weight: 400;
   font-size: 8px;

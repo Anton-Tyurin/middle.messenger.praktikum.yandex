@@ -1,3 +1,3 @@
-export { profilePage } from './profile/profilePage';
-export { profileEditPage } from './edit/profileEditPage';
-export { profileChangePasswordPage } from './change_password/profileChangePasswordPage';
+export { ProfilePage } from './profile/profilePage';
+export { ProfileEditPage } from './edit/profileEditPage';
+export { ProfileChangePasswordPage } from './change_password/profileChangePasswordPage';

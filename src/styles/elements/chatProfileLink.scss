@@ -1,12 +1,15 @@
 @import "../variables";
 
 .profileLinkWrapper {
+  display: flex;
+  justify-content: space-between;
   text-align: right;
   padding-top: 20px;
-  margin-left: 234px;
+  margin-left: 20px;
 }
 
 .profileLink {
+  cursor: pointer;
   text-decoration: none;
 }
 

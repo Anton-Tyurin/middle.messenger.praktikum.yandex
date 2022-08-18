@@ -1,2 +1,3 @@
-export { error404Page } from './404/404_page';
-export { error500Page } from './500/500_page';
+export { Error400Page } from './400/400_page';
+export { Error404Page } from './404/404_page';
+export { Error500Page } from './500/500_page';

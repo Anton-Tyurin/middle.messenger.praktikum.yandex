@@ -1,22 +1,24 @@
 import { METHODS } from '../constants/core';
 
 export type HTTPOptions = {
-    headers?: Record<string, string>,
-    method?: METHODS,
-    timeout?: number,
-    data?: Document | null
-}
+  headers?: Record<string, string>;
+  method?: METHODS;
+  contentType?: string;
+  data?: any;
+};
 
 export type TBlockProps = {
-    context?: Record<string, any>;
-    template?: string;
-    events?: {[event: string]: any};
+  context?: Record<string, any>;
+  template?: string;
+  events?: { [event: string]: any };
 } & Record<string, any>;
 
 export type TMetaBlock = {
-    tagName: string;
-    props: Record<string, any>;
-}
+  tagName: string;
+  props: Record<string, any>;
+  className?: string;
+};
 
 export const REJECT_TEXT = 'No method';
 export type Dictionary = Record<string, any>;
+export type Nullable<T> = T | null | undefined;

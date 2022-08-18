@@ -1,12 +1,12 @@
 import * as Handlebars from 'handlebars';
 import EventBus from './EventBus';
-import { TBlockProps, TMetaBlock } from '../types/core';
+import { Dictionary, TBlockProps, TMetaBlock } from '../types/core';
 import { EVENTS, HAS_NO_RIGHTS } from '../constants/core';
 
 export class Block {
-  private _element?: HTMLElement;
+  private _element: HTMLElement;
 
-  private _elementId?: string;
+  private _elementId: string;
 
   private _meta: TMetaBlock;
 
@@ -14,12 +14,15 @@ export class Block {
 
   private eventBus: EventBus;
 
-  protected _template: Handlebars.TemplateDelegate;
+  protected _template: Handlebars.TemplateDelegate<any>;
 
-  constructor(tagName: string = 'div', props = {}) {
+  /*eslint-disable */
+  constructor(tagName: string = "div", props = {}, className?: string) {
+    /* eslint-enable */
     this._meta = {
       tagName,
-      props
+      props,
+      className
     };
 
     this.props = this._makePropsProxy(props);
@@ -40,8 +43,8 @@ export class Block {
   }
 
   _createResources() {
-    const { tagName } = this._meta;
-    this._element = this._createDocumentElement(tagName);
+    const { tagName, className } = this._meta;
+    this._element = this._createDocumentElement(tagName, className);
   }
 
   init() {
@@ -53,11 +56,9 @@ export class Block {
     this.componentDidMount();
   }
 
-  componentDidMount() {
+  componentDidMount() {}
 
-  }
-
-  _componentDidUpdate(oldProps: Record<string, any>, newProps: Record<string, any>) {
+  _componentDidUpdate(oldProps: Dictionary, newProps: Dictionary) {
     const response = this.componentDidUpdate(oldProps, newProps);
     if (!response) {
       return;
@@ -65,11 +66,11 @@ export class Block {
     this.eventBus.emit(EVENTS.FLOW_RENDER);
   }
 
-  componentDidUpdate(oldProps: Record<string, any>, newProps: Record<string, any>) {
+  componentDidUpdate(oldProps: Dictionary, newProps: Dictionary) {
     return JSON.stringify(newProps) !== JSON.stringify(oldProps);
   }
 
-  setProps = (nextProps: Record<string, any>) => {
+  setProps = (nextProps: Dictionary) => {
     if (!nextProps) {
       return;
     }
@@ -83,14 +84,14 @@ export class Block {
 
   _render() {
     const { context } = this.props;
-    this._elementId = context?.id;
+    this._elementId = context && context.id;
     const block = this.render();
     if (block) {
       const isElementExist = this._element?.firstElementChild !== null;
       if (isElementExist) {
-        this._element?.firstElementChild?.replaceWith(block);
+        this._element.firstElementChild?.replaceWith(block);
       } else {
-        this._element?.appendChild(block);
+        this._element.appendChild(block);
       }
     }
 
@@ -99,7 +100,7 @@ export class Block {
   }
 
   render() {
-    const container = window.document.createElement('div');
+    const container = document.createElement('div');
     const { context } = this.props;
     container.innerHTML = this._template(context);
     return container.firstElementChild;
@@ -122,14 +123,22 @@ export class Block {
     });
   }
 
-  _createDocumentElement(tagName: string) {
-    return document.createElement(tagName);
+  private _createDocumentElement(tagName: string, classNames?: string) {
+    const node = document.createElement(tagName);
+    if (classNames) {
+      /*eslint-disable */
+      for (const className of classNames.split(" ")) {
+        node.classList.add(className);
+      }
+      /* eslint-enable */
+    }
+    return node;
   }
 
   _triggerEvent(event: Event, func: Function) {
     const target = event.target as HTMLElement;
     const id = target.getAttribute('data-id');
-    if (target && (this._elementId === id)) {
+    if (target && this._elementId === id) {
       event.preventDefault();
       func.call(this, event);
     }
@@ -139,9 +148,13 @@ export class Block {
     const { events = {} } = this.props;
     Object.keys(events).forEach((event) => {
       const root = document.querySelector('#root') as HTMLElement;
-      root.addEventListener(event, (e: Event) => {
-        this._triggerEvent(e, events[event]);
-      }, true);
+      root.addEventListener(
+        event,
+        (e: Event) => {
+          this._triggerEvent(e, events[event]);
+        },
+        true
+      );
     });
   }
 
@@ -157,9 +170,7 @@ export class Block {
 
   transformToString(): string {
     const container = document.createElement('div');
-    if (this.element) {
-      container.appendChild(this.element);
-    }
+    container.appendChild(this.element);
     return container.innerHTML;
   }
 
@@ -169,5 +180,9 @@ export class Block {
 
   hide() {
     this.element?.classList.add('hidden');
+  }
+
+  remove() {
+    this._element.remove();
   }
 }
