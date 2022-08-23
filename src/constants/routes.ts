@@ -1,8 +1,7 @@
-export enum ROUTES {
+export enum Routes {
   MAIN = '/',
   PAGE_400 = '/400',
   PAGE_401 = '/401',
-  PAGE_403 = '/403',
   PAGE_404 = '/404',
   PAGE_500 = '/500',
   LOGIN = '/sign-in',

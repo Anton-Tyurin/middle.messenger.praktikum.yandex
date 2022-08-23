@@ -1,9 +1,9 @@
-import { chat_aside_template } from './chatAside.template';
+import { ChatAsideTemplate } from './chatAside.template';
 import { Block } from '../../../core/Block';
 import { ChatProfileLink } from '../../links';
 import { ChatInput } from '../../inputs';
 import { router } from '../../../router';
-import { ROUTES } from '../../../constants/routes';
+import { Routes } from '../../../constants/routes';
 
 export class ChatAside extends Block {
   constructor(context: any, events = {}) {
@@ -14,7 +14,7 @@ export class ChatAside extends Block {
           { linkText: 'Профиль' },
           {
             click: () => {
-              router.go(ROUTES.PROFILE);
+              router.go(Routes.PROFILE);
             }
           }
         ).transformToString(),
@@ -24,7 +24,7 @@ export class ChatAside extends Block {
           chatInputWrapperClass: 'chatSearchInputWrapper'
         }).transformToString()
       },
-      template: chat_aside_template,
+      template: ChatAsideTemplate,
       events
     });
   }

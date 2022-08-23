@@ -1,5 +1,5 @@
 import * as Handlebars from 'handlebars';
-import { login_page_template } from './loginPage.template';
+import { LoginPageTemplate } from './loginPage.template';
 import { LoginInput } from '../../../components/inputs';
 import { SubmitButton } from '../../../components/submitButton';
 import { AuthLink } from '../../../components/links';
@@ -7,14 +7,14 @@ import { TLoginScheme } from '../../../types/pages';
 import { checkValidation, getFormData } from '../../../core/validate';
 import { Block } from '../../../core/Block';
 import { router } from '../../../router';
-import { ROUTES } from '../../../constants/routes';
+import { Routes } from '../../../constants/routes';
 
 import { AuthController } from '../../../controllers/authController';
 
 const controller = new AuthController();
 
 function loginPage() {
-  const template = Handlebars.compile(login_page_template);
+  const template = Handlebars.compile(LoginPageTemplate);
   const loginInput = new LoginInput(
     {
       name: 'login',
@@ -60,9 +60,9 @@ function loginPage() {
         getFormData(event)
           .then((data: any) => controller.login(data).then((result) => {
             if (result?.success) {
-              router.go(ROUTES.MAIN_CHAT);
+              router.go(Routes.MAIN_CHAT);
             } else {
-              router.go(ROUTES.PAGE_400);
+              router.go(Routes.PAGE_400);
             }
           }))
           .catch((e) => console.log(e));
@@ -75,7 +75,7 @@ function loginPage() {
     },
     {
       click: () => {
-        router.go(ROUTES.REGISTER);
+        router.go(Routes.REGISTER);
       }
     }
   );

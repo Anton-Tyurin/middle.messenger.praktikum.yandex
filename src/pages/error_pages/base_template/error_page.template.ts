@@ -1,4 +1,4 @@
-export const error_template = `
+export const ErrorPageTemplate = `
     <main class="wrapper">
         <div class="flexCenterWrapper"> 
             <div class="errorBlock">

@@ -1,6 +1,6 @@
 import { v4 as uuidv4 } from 'uuid';
 import { Block } from '../../../core/Block';
-import { login_input_template } from './loginInput.template';
+import { LoginInputTemplate } from './loginInput.template';
 import { TInput } from '../../../types/components';
 
 export class LoginInput extends Block {
@@ -10,7 +10,7 @@ export class LoginInput extends Block {
         ...context,
         id: uuidv4()
       },
-      template: login_input_template,
+      template: LoginInputTemplate,
       events
     });
   }

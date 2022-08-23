@@ -1,23 +1,23 @@
 import * as Handlebars from 'handlebars';
 import { TProfilePage } from '../../../types/pages';
-import { profile_page_template } from './profilePage.template';
+import { ProfilePageTemplate } from './profilePage.template';
 import { AsideBacklink } from '../../../components/asideBacklink';
 import { ProfileInput } from '../../../components/inputs';
 import { ProfileLink, ProfileLinkWarning } from '../../../components/links';
-
-import backlink from '../../../../static/img/backLink/backLink.svg';
 import { Block } from '../../../core/Block';
 import { router } from '../../../router';
-import { ROUTES } from '../../../constants/routes';
+import { Routes } from '../../../constants/routes';
 import { Avatar } from '../../../components/avatar';
 import { getAvatar, getUserData } from '../utils';
 import { AuthController } from '../../../controllers/authController';
-import avatarImg from '../../../../static/img/avatar/avatar.svg';
+
+const backlink = require('../../../../static/img/backLink/backLink.svg') as string;
+const avatarImg = require('../../../../static/img/avatar/avatar.svg') as string;
 
 const authController = new AuthController();
 
 function profilePage() {
-  const template = Handlebars.compile(profile_page_template);
+  const template = Handlebars.compile(ProfilePageTemplate);
   const {
     first_name, second_name, login, email, phone
   } = getUserData() || {};
@@ -27,7 +27,7 @@ function profilePage() {
     { backlink },
     {
       click: () => {
-        router.go(ROUTES.MAIN_CHAT);
+        router.go(Routes.MAIN_CHAT);
       }
     }
   );
@@ -39,7 +39,7 @@ function profilePage() {
     },
     {
       click: () => {
-        router.go(ROUTES.PROFILE_EDIT);
+        router.go(Routes.PROFILE_EDIT);
       }
     }
   );
@@ -85,7 +85,7 @@ function profilePage() {
     },
     {
       click: () => {
-        router.go(ROUTES.PROFILE_EDIT);
+        router.go(Routes.PROFILE_EDIT);
       }
     }
   );
@@ -95,7 +95,7 @@ function profilePage() {
     },
     {
       click: () => {
-        router.go(ROUTES.PROFILE_CHANGE_PASSWORD);
+        router.go(Routes.PROFILE_CHANGE_PASSWORD);
       }
     }
   );

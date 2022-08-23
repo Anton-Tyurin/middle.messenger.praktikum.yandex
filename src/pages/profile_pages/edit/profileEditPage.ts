@@ -1,10 +1,8 @@
 import * as Handlebars from 'handlebars';
 import { TProfilePage } from '../../../types/pages';
 import { AsideBacklink } from '../../../components/asideBacklink';
-import backlink from '../../../../static/img/backLink/backLink.svg';
-import { profile_edit_page_template } from './profileEditPage.template';
+import { ProfileEditPageTemplate } from './profileEditPage.template';
 import { Avatar } from '../../../components/avatar';
-import avatarImg from '../../../../static/img/avatar/avatar.svg';
 import { ProfileInput } from '../../../components/inputs';
 import { SubmitButton } from '../../../components/submitButton';
 import { checkValidation, getFormData } from '../../../core/validate';
@@ -12,12 +10,15 @@ import { Block } from '../../../core/Block';
 import { router } from '../../../router';
 import { UserController } from '../../../controllers/userController';
 import { getAvatar, getUserData } from '../utils';
-import { ROUTES } from '../../../constants/routes';
+import { Routes } from '../../../constants/routes';
+
+const backlink = require('../../../../static/img/backLink/backLink.svg') as string;
+const avatarImg = require('../../../../static/img/avatar/avatar.svg') as string;
 
 const userController = new UserController();
 
 function profileEdit() {
-  const template = Handlebars.compile(profile_edit_page_template);
+  const template = Handlebars.compile(ProfileEditPageTemplate);
   const {
     first_name, second_name, login, email, phone
   } = getUserData() || {};
@@ -26,7 +27,7 @@ function profileEdit() {
     { backlink },
     {
       click: () => {
-        router.go(ROUTES.PROFILE);
+        router.go(Routes.PROFILE);
       }
     }
   );
@@ -42,7 +43,6 @@ function profileEdit() {
             'userAvatar'
           ) as HTMLImageElement;
           const file = input.files[0];
-          console.log(file, image);
           if (file && image) {
             await userController.changeUserAvatar(file, image);
           }
@@ -144,7 +144,7 @@ function profileEdit() {
           }))
           .then((result) => {
             if (result.success) {
-              router.go(ROUTES.PROFILE);
+              router.go(Routes.PROFILE);
             }
           })
           .catch((e) => console.log(e));

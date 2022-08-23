@@ -1,4 +1,4 @@
-export const main_chat_template = `
+export const MainChatTemplate = `
     <main class="wrapper">
         <div class="chatPage">
             <div class="chatPageWrapper">

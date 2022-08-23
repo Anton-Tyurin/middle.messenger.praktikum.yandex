@@ -1,4 +1,4 @@
-export const chat_aside_template = `
+export const ChatAsideTemplate = `
       <div class="chatAside">
             <div class="profileLinkWrapper">
                 {{{createChatButton}}}

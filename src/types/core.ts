@@ -1,8 +1,8 @@
-import { METHODS } from '../constants/core';
+import { Methods } from '../constants/core';
 
 export type HTTPOptions = {
   headers?: Record<string, string>;
-  method?: METHODS;
+  method?: Methods;
   contentType?: string;
   data?: any;
 };

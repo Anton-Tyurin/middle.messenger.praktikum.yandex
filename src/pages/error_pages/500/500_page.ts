@@ -1,13 +1,13 @@
 import Handlebars from 'handlebars';
-import { error_template } from '../base_template/error_page.template';
+import { ErrorPageTemplate } from '../base_template/error_page.template';
 import { TErrorScheme } from '../../../types/pages';
 import { Block } from '../../../core/Block';
 import { AuthLink } from '../../../components/links';
 import { router } from '../../../router';
-import { ROUTES } from '../../../constants/routes';
+import { Routes } from '../../../constants/routes';
 
 function error500Template() {
-  const template = Handlebars.compile(error_template);
+  const template = Handlebars.compile(ErrorPageTemplate);
   const context: TErrorScheme = {
     code: '500',
     title: '500_page',
@@ -16,7 +16,7 @@ function error500Template() {
       { linkText: 'Назад к чатам' },
       {
         click: () => {
-          router.go(ROUTES.MAIN_CHAT);
+          router.go(Routes.MAIN_CHAT);
         }
       }
     ).transformToString()

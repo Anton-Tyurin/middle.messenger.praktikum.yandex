@@ -1,6 +1,6 @@
 import { TRoute } from '../types/router';
 import { Dictionary } from '../types/core';
-import { ROUTES } from '../constants/routes';
+import { Routes } from '../constants/routes';
 import { Route } from './route';
 
 export class Router {
@@ -60,9 +60,9 @@ export class Router {
     try {
       route?.navigate(pathname);
     } catch (e) {
-      const errorPage = this.getRoute(`/${ROUTES.PAGE_401}`);
+      const errorPage = this.getRoute(`/${Routes.PAGE_401}`);
       this._currentRoute = errorPage;
-      errorPage?.navigate(`/${ROUTES.PAGE_401}`);
+      errorPage?.navigate(`/${Routes.PAGE_401}`);
     }
   }
 

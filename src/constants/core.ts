@@ -1,4 +1,4 @@
-export enum METHODS {
+export enum Methods {
   GET = 'GET',
   POST = 'POST',
   PUT = 'PUT',
@@ -6,7 +6,7 @@ export enum METHODS {
   PATCH = 'PATCH',
 }
 
-export enum EVENTS {
+export enum ComponentEvents {
   INIT = 'init',
   FLOW_CDM = 'flow:component-did-mount',
   FLOW_CDU = 'flow:component-did-update',

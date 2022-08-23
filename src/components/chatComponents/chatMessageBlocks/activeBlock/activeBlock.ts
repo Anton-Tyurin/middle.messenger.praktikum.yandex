@@ -1,10 +1,6 @@
 import * as Handlebars from 'handlebars';
-import avatarEmpty from '../../../../../static/img/avatar/avatarEmpty.svg';
-import addFile from '../../../../../static/img/addFile/addFile.svg';
-import chatParameters from '../../../../../static/img/chatParameters/chatParameters.svg';
-import forwardLink from '../../../../../static/img/forwardLink/forwardLink.svg';
 import { ChatInput } from '../../../inputs';
-import { active_block_template } from './activeBlock.template';
+import { ActiveBlockTemplate } from './activeBlock.template';
 import { createChatWebSocket } from '../../../../controllers/chatWebSocket';
 import {
   addUsersToChat,
@@ -22,10 +18,15 @@ import { CreateChatButton } from '../../chatCreateButton';
 import { SendButton } from './components';
 import store from '../../../../store';
 import { router } from '../../../../router';
-import { ROUTES } from '../../../../constants/routes';
+import { Routes } from '../../../../constants/routes';
+
+const avatarEmpty = require('../../../../../static/img/avatar/avatarEmpty.svg') as string;
+const addFile = require('../../../../../static/img/addFile/addFile.svg') as string;
+const chatParameters = require('../../../../../static/img/chatParameters/chatParameters.svg') as string;
+const forwardLink = require('../../../../../static/img/forwardLink/forwardLink.svg') as string;
 
 export function chatActiveBlock() {
-  const template = Handlebars.compile(active_block_template);
+  const template = Handlebars.compile(ActiveBlockTemplate);
 
   const wsParamsString = localStorage.getItem('wsParams');
   let wsParams;
@@ -105,7 +106,7 @@ export function chatActiveBlock() {
             .then((data) => {
               if (data) {
                 store.setStateAndPersist({ ...data });
-                router.go(ROUTES.MAIN_CHAT_ACTIVE_DIALOG);
+                router.go(Routes.MAIN_CHAT_ACTIVE_DIALOG);
               }
             })
             .catch((error: any) => {
@@ -135,7 +136,7 @@ export function chatActiveBlock() {
               .then((data) => {
                 if (data) {
                   store.setStateAndPersist({ ...data });
-                  router.go(ROUTES.MAIN_CHAT_ACTIVE_DIALOG);
+                  router.go(Routes.MAIN_CHAT_ACTIVE_DIALOG);
                 }
               })
               .catch((error: any) => {

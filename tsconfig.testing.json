@@ -1,0 +1,14 @@
+{
+  "compilerOptions": {
+    "target": "es2019",
+    "types": [ "node", "mocha", "chai" ],
+    "module": "commonjs",
+    "sourceMap": true,
+    "esModuleInterop": true,
+    "lib": [
+      "es2016",
+      "dom"
+    ]
+  },
+  "include": ["src/**/*.spec.ts"],
+}

@@ -1,5 +1,5 @@
 import { Block } from '../../../../core/Block';
-import { chat_modal_template } from './сhatModal.template';
+import { ChatModalTemplate } from './сhatModal.template';
 import { TChatModalTemplate } from '../../../../types/components';
 
 export class ChatModal extends Block {
@@ -10,7 +10,7 @@ export class ChatModal extends Block {
         context: {
           ...context
         },
-        template: chat_modal_template,
+        template: ChatModalTemplate,
         events
       },
       `${context.modalClassName} chatModalHidden`

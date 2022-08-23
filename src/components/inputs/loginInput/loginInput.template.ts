@@ -1,4 +1,4 @@
-export const login_input_template = `<div class="formItem">
+export const LoginInputTemplate = `<div class="formItem">
     <label class="formItemLabelWrapper" for={{name}}>
         <div class="formItemLabel">{{label}}</div>
         <input placeholder={{label}} class="formItemInput" name={{name}} validation-type={{validationType}} data-id={{id}} type={{type}} >
