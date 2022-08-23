@@ -70,7 +70,7 @@
     }
   },
   "scripts": {
-    "clear": "del dist .cache",
+    "clear": "del dist",
     "start": "npm run clear && webpack && node server.js",
     "dev": "webpack serve",
     "build": "webpack",
