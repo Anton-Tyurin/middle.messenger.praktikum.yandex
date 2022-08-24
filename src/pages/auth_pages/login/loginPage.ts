@@ -21,7 +21,7 @@ function loginPage() {
       label: 'Логин',
       type: 'text',
       required: true,
-      errorMessage: 'Неверный логин',
+      errorMessage: 'Логин не соответствует требованиям',
       validationType: 'login'
     },
     {
@@ -39,7 +39,7 @@ function loginPage() {
       label: 'Пароль',
       type: 'password',
       required: true,
-      errorMessage: 'Пароль не безопасен',
+      errorMessage: 'Пароль не соответствует требованиям',
       validationType: 'password'
     },
     {
@@ -62,7 +62,12 @@ function loginPage() {
             if (result?.success) {
               router.go(Routes.MAIN_CHAT);
             } else {
-              router.go(Routes.PAGE_400);
+                console.log(result)
+                if (result === "User already in system") {
+                    router.go(Routes.MAIN_CHAT);
+                } else {
+                    router.go(Routes.PAGE_404)
+                }
             }
           }))
           .catch((e) => console.log(e));
