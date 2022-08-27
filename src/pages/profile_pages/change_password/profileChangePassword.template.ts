@@ -1,4 +1,4 @@
-export const profile_change_password_page_template = `
+export const ProfileChangePasswordTemplate = `
     <main class="wrapper">
         <div class="profilePageWrapper">
             {{{ asideBacklink }}}

@@ -1,6 +1,6 @@
 import { v4 as uuidv4 } from 'uuid';
 import { Block } from '../../../core/Block';
-import { create_chat_button_template } from './createChatButton.template';
+import { CreateChatButtonTemplate } from './createChatButton.template';
 
 export class CreateChatButton extends Block {
   constructor(context: {buttonText: string}, events: {click?: () => void} = {}) {
@@ -9,7 +9,7 @@ export class CreateChatButton extends Block {
         ...context,
         id: uuidv4()
       },
-      template: create_chat_button_template,
+      template: CreateChatButtonTemplate,
       events
     });
   }

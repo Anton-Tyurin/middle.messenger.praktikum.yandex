@@ -1,7 +1,7 @@
 import { v4 as uuidv4 } from 'uuid';
 import { Block } from '../../core/Block';
 import { TProfileAvatar } from '../../types/components';
-import { avatar_template } from './avatar.template';
+import { AvatarTemplate } from './avatar.template';
 
 export class Avatar extends Block {
   constructor(context: TProfileAvatar, events = {}) {
@@ -10,7 +10,7 @@ export class Avatar extends Block {
         ...context,
         id: uuidv4()
       },
-      template: avatar_template,
+      template: AvatarTemplate,
       events
     });
   }

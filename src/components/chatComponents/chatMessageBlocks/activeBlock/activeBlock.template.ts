@@ -1,4 +1,4 @@
-export const active_block_template = `<div class="activeChatBlockSelected">
+export const ActiveBlockTemplate = `<div class="activeChatBlockSelected">
         <div class="activeChatHeading">
             <div class="activeChatHeadingImageWrapper">
                 <img src="{{avatarEmpty}}" class="activeChatHeadingImage">

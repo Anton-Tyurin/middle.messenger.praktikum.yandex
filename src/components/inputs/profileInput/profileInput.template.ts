@@ -1,4 +1,4 @@
-export const profile_input_template = `
+export const ProfileInputTemplate = `
     <div class="profileFormItem">
         <label>
             <div class="profileFormItemWrapper">

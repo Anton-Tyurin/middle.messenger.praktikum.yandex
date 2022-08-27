@@ -2,17 +2,17 @@ import * as Handlebars from 'handlebars';
 import { LoginInput } from '../../../components/inputs';
 import { SubmitButton } from '../../../components/submitButton';
 import { AuthLink } from '../../../components/links';
-import { register_page_template } from './registerPage.template';
+import { RegisterPageTemplate } from './registerPage.template';
 import { checkValidation, getFormData } from '../../../core/validate';
 import { Block } from '../../../core/Block';
 import { router } from '../../../router';
-import { ROUTES } from '../../../constants/routes';
+import { Routes } from '../../../constants/routes';
 import { AuthController } from '../../../controllers/authController';
 
 const controller = new AuthController();
 
 function registerPage() {
-  const template = Handlebars.compile(register_page_template);
+  const template = Handlebars.compile(RegisterPageTemplate);
   const email = new LoginInput(
     {
       label: 'Почта',
@@ -142,9 +142,9 @@ function registerPage() {
           .then((data: any) => controller.signUp(data))
           .then((result) => {
             if (result?.success) {
-              router.go(ROUTES.MAIN_CHAT);
+              router.go(Routes.MAIN_CHAT);
             } else {
-              router.go(ROUTES.PAGE_400);
+              router.go(Routes.PAGE_400);
             }
           })
           .catch((e) => console.log(e));
@@ -157,7 +157,7 @@ function registerPage() {
     },
     {
       click: () => {
-        router.go(ROUTES.LOGIN);
+        router.go(Routes.LOGIN);
       }
     }
   );

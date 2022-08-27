@@ -1,7 +1,7 @@
 import * as Handlebars from 'handlebars';
 import EventBus from './EventBus';
 import { Dictionary, TBlockProps, TMetaBlock } from '../types/core';
-import { EVENTS, HAS_NO_RIGHTS } from '../constants/core';
+import { ComponentEvents, HAS_NO_RIGHTS } from '../constants/core';
 
 export class Block {
   private _element: HTMLElement;
@@ -32,14 +32,14 @@ export class Block {
 
     this.eventBus = new EventBus();
     this._registerEvents(this.eventBus);
-    this.eventBus.emit(EVENTS.INIT);
+    this.eventBus.emit(ComponentEvents.INIT);
   }
 
   _registerEvents(eventBus: EventBus) {
-    eventBus.on(EVENTS.INIT, this.init.bind(this));
-    eventBus.on(EVENTS.FLOW_CDM, this._componentDidMount.bind(this));
-    eventBus.on(EVENTS.FLOW_CDU, this._componentDidUpdate.bind(this));
-    eventBus.on(EVENTS.FLOW_RENDER, this._render.bind(this));
+    eventBus.on(ComponentEvents.INIT, this.init.bind(this));
+    eventBus.on(ComponentEvents.FLOW_CDM, this._componentDidMount.bind(this));
+    eventBus.on(ComponentEvents.FLOW_CDU, this._componentDidUpdate.bind(this));
+    eventBus.on(ComponentEvents.FLOW_RENDER, this._render.bind(this));
   }
 
   _createResources() {
@@ -49,7 +49,7 @@ export class Block {
 
   init() {
     this._createResources();
-    this.eventBus.emit(EVENTS.FLOW_RENDER);
+    this.eventBus.emit(ComponentEvents.FLOW_RENDER);
   }
 
   _componentDidMount() {
@@ -63,7 +63,7 @@ export class Block {
     if (!response) {
       return;
     }
-    this.eventBus.emit(EVENTS.FLOW_RENDER);
+    this.eventBus.emit(ComponentEvents.FLOW_RENDER);
   }
 
   componentDidUpdate(oldProps: Dictionary, newProps: Dictionary) {
@@ -95,7 +95,7 @@ export class Block {
       }
     }
 
-    this.eventBus.emit(EVENTS.FLOW_CDM);
+    this.eventBus.emit(ComponentEvents.FLOW_CDM);
     this._addEventListeners();
   }
 
@@ -114,7 +114,7 @@ export class Block {
       },
       set: (target, prop: string, value: unknown) => {
         target[prop] = value;
-        this.eventBus.emit(EVENTS.FLOW_CDU, { ...target }, target);
+        this.eventBus.emit(ComponentEvents.FLOW_CDU, { ...target }, target);
         return true;
       },
       deleteProperty: () => {

@@ -1,11 +1,12 @@
 import { router } from '../../../router';
-import { ROUTES } from '../../../constants/routes';
+import { Routes } from '../../../constants/routes';
 import { ChatController } from '../../../controllers/chatController';
 import { TChatData } from '../../../constants/api/chatApi';
-import avatarImg from '../../../../static/img/avatar/avatar.svg';
 import { ChatListItem } from '../../../components/chatComponents';
 import store from '../../../store';
 import { CreateChatButton } from '../../../components/chatComponents/chatCreateButton';
+
+const avatarImg = require('../../../../static/img/avatar/avatar.svg') as string;
 
 const chatController = new ChatController();
 
@@ -30,7 +31,7 @@ export const createNewChat = async () => {
   const title = input.value;
   await chatController.createChat({ title });
   closeModal();
-  router.go(ROUTES.MAIN_CHAT);
+  router.go(Routes.MAIN_CHAT);
 };
 
 const openSelectedChat = async (elemData: TChatData) => {
@@ -44,10 +45,9 @@ const openSelectedChat = async (elemData: TChatData) => {
   }
 
   if (user) {
-    console.log(user.id, id);
     await chatController.connectToChat(user.id, id);
   }
-  router.go(ROUTES.MAIN_CHAT_ACTIVE_DIALOG);
+  router.go(Routes.MAIN_CHAT_ACTIVE_DIALOG);
 };
 
 export const getListItems = (): string[] => {

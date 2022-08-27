@@ -5,7 +5,7 @@ export type TPasswordData = {
   newPassword: string;
 };
 
-export enum USER_API {
+export enum UserApiRoutes {
   PROFILE = '/profile',
   PROFILE_AVATAR = '/profile/avatar',
   PASSWORD = '/password',

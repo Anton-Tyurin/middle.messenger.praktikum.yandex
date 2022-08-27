@@ -21,7 +21,7 @@ export type TCreateChat = {
   title: string;
 };
 
-export enum CHAT_API {
+export enum ChatApiRoutes {
   MAIN = '/',
   ADD_USER = '/users',
   GET_USER = '/token/',

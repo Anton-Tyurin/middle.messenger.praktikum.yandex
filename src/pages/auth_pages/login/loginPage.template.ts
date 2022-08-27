@@ -1,4 +1,4 @@
-export const login_page_template = `
+export const LoginPageTemplate = `
     <main class="wrapper">
         <div class="flexCenterWrapper authWrapper">
             <form class="authForm loginForm">

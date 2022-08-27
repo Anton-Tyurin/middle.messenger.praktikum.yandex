@@ -1,4 +1,4 @@
-export const chat_modal_template = `
+export const ChatModalTemplate = `
     <div class="modalChatWrapper">
         <div> 
             {{{chatModalInput}}}

@@ -1,6 +1,6 @@
 import { v4 as uuidv4 } from 'uuid';
 import { Block } from '../../../../../core/Block';
-import { modal_input_template } from './modalInput.template';
+import { ModalInputTemplate } from './modalInput.template';
 
 export class ModalInput extends Block {
   constructor(context: {inputId?: string, placeholder: string}, events = {}) {
@@ -9,7 +9,7 @@ export class ModalInput extends Block {
         ...context,
         id: uuidv4()
       },
-      template: modal_input_template,
+      template: ModalInputTemplate,
       events
     });
   }

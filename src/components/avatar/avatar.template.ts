@@ -1,4 +1,4 @@
-export const avatar_template = `
+export const AvatarTemplate = `
     <div>
         <a class="userAvatar" >
             <div class="userAvatarWrapper">

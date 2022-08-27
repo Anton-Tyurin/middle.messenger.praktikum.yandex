@@ -1,4 +1,4 @@
-import { METHODS } from '../constants/core';
+import { Methods } from '../constants/core';
 import { HTTPOptions } from '../types/core';
 
 export class HTTPTransport {
@@ -17,7 +17,7 @@ export class HTTPTransport {
     headers?: Record<string, string>
   ): Promise<Response> {
     return this.request<Response>(this.url + path, {
-      method: METHODS.GET,
+      method: Methods.GET,
       data,
       headers,
     });
@@ -30,7 +30,7 @@ export class HTTPTransport {
     headers?: Record<string, string>
   ): Promise<Response> {
     return this.request<Response>(this.url + path, {
-      method: METHODS.POST,
+      method: Methods.POST,
       data,
       headers
     });
@@ -43,7 +43,7 @@ export class HTTPTransport {
     contentType?: string
   ): Promise<Response> {
     return this.request<Response>(this.url + path, {
-      method: METHODS.PUT,
+      method: Methods.PUT,
       data,
       headers,
       contentType
@@ -56,7 +56,7 @@ export class HTTPTransport {
     headers?: Record<string, string>
   ): Promise<Response> {
     return this.request<Response>(this.url + path, {
-      method: METHODS.PATCH,
+      method: Methods.PATCH,
       data,
       headers
     });
@@ -68,7 +68,7 @@ export class HTTPTransport {
     headers?: Record<string, string>
   ): Promise<Response> {
     return this.request<Response>(this.url + path, {
-      method: METHODS.DELETE,
+      method: Methods.DELETE,
       data,
       headers
     });
@@ -76,7 +76,7 @@ export class HTTPTransport {
 
   private request<Response>(
     url: string,
-    options: HTTPOptions = { method: METHODS.GET }
+    options: HTTPOptions = { method: Methods.GET }
   ): Promise<Response> {
     const { method, data = {}, headers = {} } = options;
 
@@ -104,7 +104,7 @@ export class HTTPTransport {
       Object.entries(headers).forEach((entry) => xhr.setRequestHeader(entry[0], entry[1]));
       xhr.setRequestHeader('Accept', 'application/json');
 
-      if (method === METHODS.GET || !data) {
+      if (method === Methods.GET || !data) {
         xhr.setRequestHeader('Content-Type', 'application/json');
         xhr.send();
       } else if (data instanceof FormData) {

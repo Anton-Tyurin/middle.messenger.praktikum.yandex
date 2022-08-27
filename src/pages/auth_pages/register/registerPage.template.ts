@@ -1,4 +1,4 @@
-export const register_page_template = `<div class="flexCenterWrapper authWrapper">
+export const RegisterPageTemplate = `<div class="flexCenterWrapper authWrapper">
     <form class="authForm">
             <div>
                 <h1 class="formHeading">{{formHeading}}</h1>

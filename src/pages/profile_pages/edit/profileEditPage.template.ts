@@ -1,4 +1,4 @@
-export const profile_edit_page_template = `
+export const ProfileEditPageTemplate = `
      <main class="wrapper">
         <div class="profilePageWrapper">
             {{{ asideBacklink }}}

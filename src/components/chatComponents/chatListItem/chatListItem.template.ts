@@ -1,4 +1,4 @@
-export const chat_list_item_template = `<a data-id={{id}} class="chatProfileLink">
+export const ChatListItemTemplate = `<a data-id={{id}} class="chatProfileLink">
         <li data-id={{id}} class="chatListItem">
             <div data-id={{id}}  class="chatListItemAvatarWrapper">
                 <img data-id={{id}} src="{{avatar}}" class="chatListItemAvatar">

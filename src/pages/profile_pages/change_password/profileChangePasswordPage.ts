@@ -1,30 +1,31 @@
 import * as Handlebars from 'handlebars';
 import { TProfilePage } from '../../../types/pages';
 import { AsideBacklink } from '../../../components/asideBacklink';
-import backlink from '../../../../static/img/backLink/backLink.svg';
-import { profile_change_password_page_template } from './profileChangePassword.template';
+import { ProfileChangePasswordTemplate } from './profileChangePassword.template';
 import { ProfileInput } from '../../../components/inputs';
 import { Avatar } from '../../../components/avatar';
-import avatarImg from '../../../../static/img/avatar/avatar.svg';
 import { SubmitButton } from '../../../components/submitButton';
 import { Block } from '../../../core/Block';
 import { router } from '../../../router';
-import { ROUTES } from '../../../constants/routes';
+import { Routes } from '../../../constants/routes';
 import { getFormData } from '../../../core/validate';
 import { UserController } from '../../../controllers/userController';
 import { getAvatar } from '../utils';
 
+const backlink = require('../../../../static/img/backLink/backLink.svg') as string;
+const avatarImg = require('../../../../static/img/avatar/avatar.svg') as string;
+
 const userController = new UserController();
 
 function profileChangePassword() {
-  const template = Handlebars.compile(profile_change_password_page_template);
+  const template = Handlebars.compile(ProfileChangePasswordTemplate);
   const avatarIcon = getAvatar();
 
   const asideBackLink = new AsideBacklink(
     { backlink },
     {
       click: () => {
-        router.go(ROUTES.PROFILE);
+        router.go(Routes.PROFILE);
       }
     }
   );
@@ -65,7 +66,7 @@ function profileChangePassword() {
           })
           .then((result) => {
             if (result.success) {
-              router.go(ROUTES.PROFILE);
+              router.go(Routes.PROFILE);
             }
           })
           .catch((e) => console.log(e));
